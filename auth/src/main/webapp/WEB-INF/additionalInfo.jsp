@@ -19,20 +19,33 @@
 	<div class="main">
 		<input type="checkbox" id="chk" aria-hidden="true">
 
-		<div class="signup">
-			<form action='process' method='post'>
-				<label for="chk" aria-hidden="true">Form for addtional info</label>
-				<input type="number" name="first_name" placeholder="Height"
-					required=""> <input type="number" name="last_name"
-					placeholder="weigth" required=""> <input type="dropdown"
-					name="email" placeholder="Gender" required=""> <input
-					type="text" name="password" placeholder="Goal" required="">
-				<input type="password" name="confirm_password"
-					placeholder="Activity" required=""> <input type="password"
-					name="confirm_password" placeholder="Age" required="">
-				<button>Submit</button>
-			</form>
-		</div>
+		<form action="/calculate/${user}" method="post">
+			<label for="chk" aria-hidden="true">Form for additional info</label>
+			<input type="number" name="height" placeholder="Height" required>
+			<input type="number" name="weight" placeholder="Weight" required>
+			<select name="gender" required>
+				<option value="" disabled selected style="display: none;">Gender</option>
+				<option value="m">Male</option>
+				<option value="f">Female</option>
+			</select>
+			<select name="Goal" required> 
+				<option value="" disabled selected style="display: none;">Activity Level</option>
+				<option value="0">Maintain</option>
+				<option value="1">Lose</option>
+				<option value="2">Gain</option>
+			</select>
+			<select name="activityLevel"  required>
+				<option value="" disabled selected style="display: none;">Activity Level</option>
+				<option value="1.2">Sedentary:little or no exercise</option>
+				<option value="1.375">Lightly active: Exercise 1-3 times/week</option>
+				<option value="1.46">Lightly to moderately active:Exercise 4-5 times/week</option>
+				<option value="1.55"> : Daily exercise or intense exercise 3-4 times/week</option>
+				<option value="1.725">Very active: Intense exercise 6-7 times/week</option>
+			</select> 
+			<input type="number" name="age" placeholder="Age" required>
+			<button type="submit">Submit</button>
+		</form>
+	</div>
 	</div>
 </body>
 </html>

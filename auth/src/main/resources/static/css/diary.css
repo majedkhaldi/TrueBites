@@ -1,0 +1,85 @@
+
+.card {
+    width: 100%;
+    max-width: 800px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+
+.meal-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.2em;
+}
+.meal-option:last-child {
+    border-bottom: none;
+}
+.plus-sign {
+    cursor: pointer;
+    font-size: 24px;
+    color: #de4b07;
+}
+.search-bar {
+    display: none;
+    margin-top: 10px;
+    transition: height 0.3s ease;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+}
+
+#navbarr{
+        background: rgba(246, 232, 225);
+        padding: 10px 0;
+        border-bottom: 1px solid transparent;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        /* z-index: 1000; */
+        /* transition: background 0.3s ease, border-bottom 0.3s ease; */
+    
+}
+
+.nav-linkss {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    /* opacity: 0; */
+    /* transition: opacity 0.3s ease; */
+}
+.nav-linkss li {
+    margin-left: 20px;
+}
+.nav-linkss a {
+    text-decoration: none;
+    color:#000;
+    font-weight: normal;
+    /* padding: 8px 16px; */
+    /* transition: background 0.3s ease; */
+}
+.nav-linkss a:hover {
+    background: #f2f2f2;
+    border-radius: 4px;
+}
+
+.nav-linkss{
+    margin-top: 20px;
+    margin-right: 100px;
+    display: flex;
+    justify-content: space-around;
+    
+}

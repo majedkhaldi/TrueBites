@@ -9,6 +9,6 @@ import com.codingdojo.auth.models.Fat;
 
 @Repository
 public interface FatsRepository extends JpaRepository<Fat, Long> {
-    List<Fat> findByRecommendedTrue();
+    List<Fat> findByRecommendedTrue(int r);
     List<Fat> findByTypeAndRecommendedTrue(String type);
 }

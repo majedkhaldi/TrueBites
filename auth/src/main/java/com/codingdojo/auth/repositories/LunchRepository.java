@@ -9,6 +9,6 @@ import com.codingdojo.auth.models.Lunch;
 
 @Repository
 public interface LunchRepository extends JpaRepository<Lunch, Long> {
-    List<Lunch> findByRecommendedTrue();
+    List<Lunch> findByRecommendedTrue(int r);
     List<Lunch> findByTypeAndRecommendedTrue(String type);
 }

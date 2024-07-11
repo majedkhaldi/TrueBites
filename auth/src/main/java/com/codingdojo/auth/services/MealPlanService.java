@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codingdojo.auth.models.Brinner;
+import com.codingdojo.auth.models.Fat;
 import com.codingdojo.auth.models.Lunch;
 import com.codingdojo.auth.models.Snack;
 import com.codingdojo.auth.models.User;
@@ -36,10 +37,10 @@ public class MealPlanService {
         int snackCalories = dailyCalories * 15 / 100;
         int dinnerCalories = dailyCalories * 20 / 100;
 
-        List<Brinner> recommendedBrinner = brinnerRepo.findByRecommended(true);
-        List<Lunch> recommendedLunch = lunchRepo.findByRecommended(true);
-        List<Snack> recommendedSnack = snackRepo.findByRecommended(true);
-        List<Fats> recommendedFats = fatsRepo.findByRecommended(true);
+        List<Brinner> recommendedBrinner = brinnerRepo.findByRecommendedTrue(1);
+        List<Lunch> recommendedLunch = lunchRepo.findByRecommendedTrue(1);
+        List<Snack> recommendedSnack = snackRepo.findByRecommendedTrue(1);
+        List<Fat> recommendedFats = fatsRepo.findByRecommendedTrue(1);
 
         // Generate meal plans based on the requirements
 

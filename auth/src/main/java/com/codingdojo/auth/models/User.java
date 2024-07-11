@@ -55,12 +55,12 @@ public class User {
     private int age;
     @Nullable
     @Column(columnDefinition = "TEXT")
-    private HashMap<Double,String> activityLevels = new HashMap<>();
+    private String activityLevels;
     @Nullable
 	private String activityLevel;
     @Nullable
     @Column(columnDefinition = "TEXT")
-	private HashMap<Integer,String> goals = new HashMap<>();
+	private String goals;
     @Nullable
 	private String goal;
     @Nullable
@@ -83,21 +83,21 @@ public class User {
     private Map<Integer, String> goalsMap = new HashMap<>();
 	 
 	 public User() {
-		 activityLevels.put(1.2, "Sedentary");
-			activityLevels.put(1.375, "Lightly active");
-			activityLevels.put(1.46, "Lightly to moderately active");
-			activityLevels.put(1.55, "Moderately active");
-			activityLevels.put(1.725, "Very active");
-			activityLevels.put(1.9, "Super active");
-			goals.put(0, "Maintain weight");
-			goals.put(1, "Lose weight");
-			goals.put(2, "Gain weight");
-//	        try {
-//	            this.activityLevels = convertMapToJson(activityLevelsMap);
-//	            this.goals = convertMapToJson(goalsMap);
-//	        } catch (JsonProcessingException e) {
-//	            e.printStackTrace();
-//	        }
+		 activityLevelsMap.put(1.2, "Sedentary");
+		 activityLevelsMap.put(1.375, "Lightly active");
+		 activityLevelsMap.put(1.46, "Lightly to moderately active");
+		 activityLevelsMap.put(1.55, "Moderately active");
+		 activityLevelsMap.put(1.725, "Very active");
+		 activityLevelsMap.put(1.9, "Super active");
+		 goalsMap.put(0, "Maintain weight");
+		 goalsMap.put(1, "Lose weight");
+		 goalsMap.put(2, "Gain weight");
+	        try {
+	            this.activityLevels = convertMapToJson(activityLevelsMap);
+	            this.goals = convertMapToJson(goalsMap);
+	        } catch (JsonProcessingException e) {
+	            e.printStackTrace();
+	        }
 	 }
 	 
 	 public Long getId() {

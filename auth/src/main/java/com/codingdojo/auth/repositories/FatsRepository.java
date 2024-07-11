@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.codingdojo.auth.models.Fat;
 
 @Repository
-public interface FatsRepository extends JpaRepository<Fat, Long> {
+public interface FatsRepository extends JpaRepositoryy<Fat, Long> {
     List<Fat> findByRecommendedTrue();
     List<Fat> findByTypeAndRecommendedTrue(String type);
 }

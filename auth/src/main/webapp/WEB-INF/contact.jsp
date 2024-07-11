@@ -26,8 +26,10 @@
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
 	href="vendor/select2/select2.min.css">
-<link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/util.css">
+
+<link rel="stylesheet" href="/css/main1.css">
+<link rel="stylesheet" href="/css/util.css">
+
 
 </head>
 <body>

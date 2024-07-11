@@ -317,6 +317,59 @@ textarea.input1 + .shadow-input1 {
 }
 
 
+.Subscribe {width: 100%;height: auto;color: #fff; padding: 60px; background: rgb(248, 136, 9);}
+
+.Subscribe form {
+    float: right;
+}
+.Subscribe .heading h3 {
+    font-size: 50px;
+    font-weight: 300;
+    letter-spacing: -3px;
+    padding-bottom: 0px;
+}
+.Subscribe .heading h6 {
+    font-size: 25px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+.Subscribe .Subscribe {
+    padding: 55px 0;
+}
+.Subscribe .form-control {
+    margin-bottom: 19px;
+    font-size: 14px;
+    border-radius: 0;
+    font-style: italic;
+    padding: 10px 10px;
+}
+.Subscribe .input-group {padding: 7px 0;}
+.Subscribe .btn-info {
+    width: 300px;
+    height: 72px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #de4b07;
+    background: rgba(255, 255, 255, 0.80);
+    font-size: 22px;
+    border-radius: 0;
+    font-weight: 400;
+    border: 2px solid transparent;
+}
+.Subscribe .btn-info:hover {
+    color: #fff;
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+.Subscribe input {
+    font-size: 12px;
+    width: 322px;
+    height: 72px;
+    padding: 0 18px;
+    border: none;
+}
+
 
 
 /*------------------------------------------------------------------
@@ -326,6 +379,15 @@ textarea.input1 + .shadow-input1 {
   .contact1-pic {
     width: 33.5%;
   }
+  
+@media(max-width:1024px) {
+    .Subscribe .heading h3 {font-size: 34px;letter-spacing: -1px;}
+    .Subscribe .heading h6 {font-size: 20px;letter-spacing: 1px;}
+    .Subscribe .btn-info {width: 143px;height: 60px;font-size: 16px;}
+    .Subscribe input {font-size: 12px;width: 320px;height: 60px;padding: 0 13px;}
+    .Subscribe {padding: 35px 0;}
+
+}
 
   .contact1-form {
     width: 44%;

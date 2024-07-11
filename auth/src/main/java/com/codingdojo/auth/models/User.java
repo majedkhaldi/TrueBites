@@ -1,8 +1,10 @@
 package com.codingdojo.auth.models;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -38,6 +40,24 @@ public class User {
     @NotEmpty()
 	@Size(min = 8)
     private String passwordConfirmation;
+    @Nullable
+    private int height;
+    @Nullable
+    private int weight;
+    @Nullable
+    private String gender;
+    @Nullable
+    private int age;
+    @Nullable
+    private HashMap<Double,String> activityLevels;
+    @Nullable
+	private String activityLevel;
+    @Nullable
+	private HashMap<Integer,String> goals;
+    @Nullable
+	private String goal;
+    @Nullable
+	private String bmi;
     
     private Date createdAt;
     private Date updatedAt;
@@ -50,6 +70,15 @@ public class User {
     private List <Role> roles;
 	 
 	 public User() {
+		 activityLevels.put(1.2, "Sedentary");
+			activityLevels.put(1.375, "Lightly active");
+			activityLevels.put(1.46, "Lightly to moderately active");
+			activityLevels.put(1.55, "Moderately active");
+			activityLevels.put(1.725, "Very active");
+			activityLevels.put(1.9, "Super active");
+			goals.put(0, "Maintain weight");
+			goals.put(1, "Lose weight");
+			goals.put(2, "Gain weight");
 	 }
 	 
 	 public Long getId() {
@@ -94,7 +123,69 @@ public class User {
 	 public void setRoles(Role role) {
 	     this.roles = (List<Role>) role;
 	 }
-	 
+	 public String getGoal() {
+			return goal;
+		}
+
+
+	public void setGoal(Integer goal) {
+		this.goal = goals.get(goal);
+	}
+
+
+	
+
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getActivitylevel() {
+		return activityLevel;
+	}
+
+
+	public void setActivitylevel(Double act) {
+		this.activityLevel = activityLevels.get(act);
+	}
+
+
+	public String getBmi() {
+		return bmi;
+	}
+
+
+	public void setBmi(String bmi) {
+		this.bmi = bmi;
+	}
 	 @PrePersist
 	 protected void onCreate(){
 	     this.createdAt = new Date();

@@ -1,11 +1,12 @@
 package com.codingdojo.auth.services;
+import java.util.Optional;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.codingdojo.auth.models.User;
 import com.codingdojo.auth.repositories.RoleRepository;
 import com.codingdojo.auth.repositories.UserRepository;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  
 @Service
 public class UserService {
@@ -36,6 +37,14 @@ public class UserService {
     // 3
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+    
+    public User findById(Long id) {
+    	Optional<User> potential = userRepository.findById(id);
+    	if(potential.isPresent()) {
+    		return potential.get();
+    	}
+    	return null;
     }
 }
 

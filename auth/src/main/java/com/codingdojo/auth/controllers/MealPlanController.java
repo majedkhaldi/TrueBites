@@ -25,6 +25,7 @@ public class MealPlanController {
 
     @PostMapping("/generateMealPlans")
     public String generateMealPlans(@RequestParam Long userId, Model model) {
+    	
         User user = userService.findById(userId);
         List<MealPlan> mealPlans = mealPlanService.generateMealPlans(user);
         model.addAttribute("mealPlans", mealPlans);

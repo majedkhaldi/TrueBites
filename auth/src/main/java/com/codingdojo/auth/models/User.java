@@ -148,11 +148,9 @@ public class User {
 
 
 	public void setGoal(Integer goal) {
-		this.goal = goals.get(goal);
+		this.goal = goalsMap.get(goal);
 	}
 
-
-	
 
 
 	public int getHeight() {
@@ -193,7 +191,7 @@ public class User {
 
 
 	public void setActivitylevel(Double act) {
-		this.activityLevel = activityLevels.get(act);
+		this.activityLevel = activityLevelsMap.get(act);
 	}
 
 

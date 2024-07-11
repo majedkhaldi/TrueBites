@@ -144,10 +144,7 @@
                    <p >
                     In today's world, the field of nutrition is often clouded with conflicting information and shocking articles that demonize certain foods. These misleading narratives can create confusion and unhealthy relationships with food. Our website’s idea is built on the fundamental belief that there are no inherently "bad" foods. Instead, we advocate for a balanced and informed approach to nutrition, emphasizing that all foods can be enjoyed in moderation as part of a healthy lifestyle.
                    </p>
-                   <p >Our mission is to challenge the prevalent myths that dominate much of the nutritional discourse. We aim to provide evidence-based information and practical tools that empower individuals to make well-informed dietary choices without guilt or fear. By promoting the idea that all foods can fit into a balanced diet, we hope to foster a more positive and sustainable approach to eating. To achieve this, our website will feature a variety of tools and resources designed to help users understand their nutritional needs and make healthier choices. 
-                  </p>
-                  <p >Ultimately, our goal is to debunk nutritional myths, promote moderation, and support our users in leading healthier, more balanced lives. We believe that by providing clear, accurate, and unbiased information, we can help individuals navigate the often confusing world of nutrition with confidence and clarity.
-                  </p>
+                   <p >Our mission is to challenge the prevalent myths that dominate much of the nutritional discourse. We aim to provide evidence-based information and practical tools that empower individuals to make well-informed dietary choices without guilt or fear. By promoting the idea that all foods can fit into a balanced diet, we hope to foster a more positive and sustainable approach to eating. To achieve this, our website will feature a variety of tools and resources designed to help users understand their nutritional needs and make healthier choices.</p>
                 </div>
             </div>
 

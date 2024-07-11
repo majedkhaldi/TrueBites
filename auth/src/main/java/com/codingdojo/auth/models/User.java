@@ -34,15 +34,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    //Muath NEW
+    @Email()
+    private String email;
+    
     @Size(min=3)
     private String username;
     
-    // NEW
     @Size(min=5)
     private String password;
-  
-    
+ 
     @Transient
     @NotEmpty()
 	@Size(min = 8)
@@ -116,6 +116,14 @@ public class User {
 	 public void setUsername(String username) {
 	     this.username = username;
 	 }
+	 
+	 public String getEmail() {
+	     return email;
+	 }
+	 public void setEmail(String email) {
+	     this.email = email;
+	 }
+	 
 	 public String getPassword() {
 	     return password;
 	 }

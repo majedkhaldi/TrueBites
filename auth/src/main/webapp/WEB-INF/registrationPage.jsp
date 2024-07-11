@@ -20,15 +20,17 @@
 			<form:form method="POST" action="/register" modelAttribute="user">
 				<label for="chk" aria-hidden="true">Sign up</label>
 				<p>
-					
-					<form:input path="username" placeholder="User Name" />
-					
+					<form:input path="username" placeholder="Username" />
+				</p>
+				
+				<p>
+					<form:input path="email" placeholder="Email" />
 				</p>
 
 				<p>
-					
 					<form:password path="password" placeholder="Password" />
 				</p>
+				
 				<p>
 					<form:password path="passwordConfirmation" placeholder="Confirm Password" />
 				</p>

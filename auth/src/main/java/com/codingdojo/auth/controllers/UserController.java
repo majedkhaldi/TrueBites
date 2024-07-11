@@ -128,6 +128,7 @@ public class UserController {
 				eer = tdee;
 		}
 		session.setAttribute("bmi", bmi);
+		thisuser.setEer(eer);
 		session.setAttribute("eer", eer);
 		session.setAttribute("idealWeight", idealWeight);
 		return"redirect:/profile/{id}";

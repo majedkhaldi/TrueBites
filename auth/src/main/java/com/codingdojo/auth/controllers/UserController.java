@@ -33,6 +33,10 @@ public class UserController {
         this.userService = userService;
         this.userValidator = userValidator;
     }
+    @GetMapping("/unregistered")
+    public String homepage() {
+    	return "homePage.jsp";
+    }
     
     @RequestMapping("/register")
     public String registerForm(@ModelAttribute("user") User user) {

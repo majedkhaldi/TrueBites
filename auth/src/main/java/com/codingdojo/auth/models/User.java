@@ -3,8 +3,13 @@ package com.codingdojo.auth.models;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.annotation.Nullable;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -49,11 +54,13 @@ public class User {
     @Nullable
     private int age;
     @Nullable
-    private HashMap<Double,String> activityLevels;
+    @Column(columnDefinition = "TEXT")
+    private HashMap<Double,String> activityLevels = new HashMap<>();
     @Nullable
 	private String activityLevel;
     @Nullable
-	private HashMap<Integer,String> goals;
+    @Column(columnDefinition = "TEXT")
+	private HashMap<Integer,String> goals = new HashMap<>();
     @Nullable
 	private String goal;
     @Nullable
@@ -68,6 +75,12 @@ public class User {
         joinColumns = @JoinColumn(name = "user_id"), 
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List <Role> roles;
+    
+    @Transient
+    private Map<Double, String> activityLevelsMap = new HashMap<>();
+
+    @Transient
+    private Map<Integer, String> goalsMap = new HashMap<>();
 	 
 	 public User() {
 		 activityLevels.put(1.2, "Sedentary");
@@ -79,6 +92,12 @@ public class User {
 			goals.put(0, "Maintain weight");
 			goals.put(1, "Lose weight");
 			goals.put(2, "Gain weight");
+//	        try {
+//	            this.activityLevels = convertMapToJson(activityLevelsMap);
+//	            this.goals = convertMapToJson(goalsMap);
+//	        } catch (JsonProcessingException e) {
+//	            e.printStackTrace();
+//	        }
 	 }
 	 
 	 public Long getId() {
@@ -194,6 +213,10 @@ public class User {
 	 protected void onUpdate(){
 	     this.updatedAt = new Date();
 	 }
+    private String convertMapToJson(Map<?, ?> map) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(map);
+    }
 }
 
 

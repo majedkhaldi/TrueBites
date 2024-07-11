@@ -14,6 +14,6 @@ public class RController {
 
 	@GetMapping("/start")
 	public String start() {
-		return "start.jsp";
+		return "Home.jsp";
 	}
 }

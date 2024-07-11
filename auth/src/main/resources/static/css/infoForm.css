@@ -6,7 +6,7 @@ body {
 	align-items: center;
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
-	background-image: url(reversed_image_new_high_quality_1.jpg);
+	background-image: url('/images/reversed_image_new_high_quality_1.jpg');
 	background-size: cover;
 }
 
@@ -76,7 +76,7 @@ label {
 	transition: .5s ease-in-out;
 }
 
-input {
+input , select {
 	width: 60%;
 	height: 10px;
 	background: #e0dede;

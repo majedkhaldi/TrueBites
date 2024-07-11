@@ -33,10 +33,7 @@ public class UserController {
         this.userService = userService;
         this.userValidator = userValidator;
     }
-    @GetMapping("/unregistered")
-    public String homepage() {
-    	return "homePage.jsp";
-    }
+
     
     @RequestMapping("/register")
     public String registerForm(@ModelAttribute("user") User user) {
@@ -128,6 +125,7 @@ public class UserController {
 				eer = tdee;
 		}
 		session.setAttribute("bmi", bmi);
+		thisuser.setEer(eer);
 		session.setAttribute("eer", eer);
 		session.setAttribute("idealWeight", idealWeight);
 		return"redirect:/profile/{id}";
@@ -158,5 +156,20 @@ public class UserController {
 		return "xyz.jsp";
 
 	}
+	//Additional info form
+	@GetMapping("/more")
+	public String moreForm(Principal principal, Model model) {
+		String thisusername= principal.getName();
+		User user = userService.findByUsername(thisusername);
+		Long id = user.getId();
+		model.addAttribute("user", id);
+		if(user.getGender() == null) {
+			return "additionalInfo.jsp";
+		}
+			
+		
+		return "redirect:/profile/{id}";
+	}
+
 }
 

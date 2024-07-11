@@ -1,10 +1,11 @@
 package com.codingdojo.auth.controllers;
 
+import java.security.Principal;
 import java.util.List;
-import org.springframework.ui.Model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,11 +25,11 @@ public class MealPlanController {
     private UserService userService;
 
     @PostMapping("/generateMealPlans")
-    public String generateMealPlans(@RequestParam Long userId, Model model) {
-    	
+    public String generateMealPlans(Principal pr, Model model) {
+    	Long userId = (userService.findByUsername(pr.getName())).getId();
         User user = userService.findById(userId);
         List<MealPlan> mealPlans = mealPlanService.generateMealPlans(user);
-        model.addAttribute("mealPlans", mealPlans);
+        model.addAttribute("mealPglans", mealPlans);
         return "mealPlans.jsp";
     }
 }

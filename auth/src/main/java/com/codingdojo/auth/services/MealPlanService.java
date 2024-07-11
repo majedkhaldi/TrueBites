@@ -42,10 +42,10 @@ public class MealPlanService {
         int snackCalories = dailyCalories * 15 / 100;
         int dinnerCalories = dailyCalories * 20 / 100;
 
-        List<Brinner> recommendedBrinner = brinnerRepo.findByRecommendedTrue(1);
-        List<Lunch> recommendedLunch = lunchRepo.findByRecommendedTrue(1);
-        List<Snack> recommendedSnack = snackRepo.findByRecommendedTrue(1);
-        List<Fat> recommendedFats = fatsRepo.findByRecommendedTrue(1);
+        List<Brinner> recommendedBrinner = brinnerRepo.findByRecommended(1);
+        List<Lunch> recommendedLunch = lunchRepo.findByRecommended(1);
+        List<Snack> recommendedSnack = snackRepo.findByRecommended(1);
+        List<Fat> recommendedFats = fatsRepo.findByRecommended(1);
 
         List<MealPlan> mealPlans = new ArrayList<>();
         for (int i = 0; i < 3; i++) {

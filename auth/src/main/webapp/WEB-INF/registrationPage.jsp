@@ -16,6 +16,7 @@
 			<input type="checkbox" id="chk" aria-hidden="true">
 			<div class="signup">
 				<p>
+
 					<form:errors path="user.*" />
 				</p>
 
@@ -52,6 +53,8 @@
 				</form>
 				
 			</div>
+
+
 		</div>
 	</div>
 </body>

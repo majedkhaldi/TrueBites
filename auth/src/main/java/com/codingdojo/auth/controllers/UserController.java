@@ -156,5 +156,20 @@ public class UserController {
 		return "xyz.jsp";
 
 	}
+	//Additional info form
+	@GetMapping("/more")
+	public String moreForm(Principal principal, Model model) {
+		String thisusername= principal.getName();
+		User user = userService.findByUsername(thisusername);
+		Long id = user.getId();
+		model.addAttribute("user", id);
+		if(user.getGender() == null) {
+			return "additionalInfo.jsp";
+		}
+			
+		
+		return "redirect:/profile/{id}";
+	}
+
 }
 

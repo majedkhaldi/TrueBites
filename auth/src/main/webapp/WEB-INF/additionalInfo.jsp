@@ -29,14 +29,12 @@
 				<option value="f">Female</option>
 			</select>
 			<select name="Goal" required> 
-				<option value="" disabled selected style="display: none;">Activity Level</option>
-				<option value="0">Maintain</option>
+				<option value="0" disabled selected style="display: none;">Maintain</option>
 				<option value="1">Lose</option>
 				<option value="2">Gain</option>
 			</select>
 			<select name="activityLevel"  required>
-				<option value="" disabled selected style="display: none;">Activity Level</option>
-				<option value="1.2">Sedentary:little or no exercise</option>
+				<option value="1.2" disabled selected style="display: none;">Sedentary:little or no exercise</option>
 				<option value="1.375">Lightly active: Exercise 1-3 times/week</option>
 				<option value="1.46">Lightly to moderately active:Exercise 4-5 times/week</option>
 				<option value="1.55"> : Daily exercise or intense exercise 3-4 times/week</option>

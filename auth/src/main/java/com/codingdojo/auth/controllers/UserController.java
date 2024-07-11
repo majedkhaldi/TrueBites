@@ -35,7 +35,7 @@ public class UserController {
     }
 
     
-    @RequestMapping("/register")
+    @RequestMapping("/registrationPage")
     public String registerForm(@ModelAttribute("user") User user) {
         return "registrationPage.jsp";
     }
@@ -61,14 +61,16 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
-        if(error != null) {
+    public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout,Model model) {
+        if(error!=null ) {
             model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
         }
         if(logout != null) {
             model.addAttribute("logoutMessage", "Logout Successful!");
         }
-        return "registrationPage.jsp";
+        
+        System.out.println("--------->");
+        return "loginPage.jsp";
     }
     
     

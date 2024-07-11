@@ -26,8 +26,12 @@
 
 						<form:input path="username" placeholder="User Name" />
 
-					</p>
 
+
+					</p>
+					<p>
+						<form:input path="email" placeholder="Email" />
+					</p>
 					<p>
 
 						<form:password path="password" placeholder="Password" />
@@ -40,18 +44,25 @@
 				</form:form>
 			</div>
 			<div class="login">
+				<c:if test="${logoutMessage != null}">
+					<c:out value="${logoutMessage}"></c:out>
+				</c:if>
+				<c:if test="${errorMessage != null}">
+					<c:out value="${errorMessage}"></c:out>
+				</c:if>
 				<form method="POST" action="/login">
 					<label for="chk" aria-hidden="true">Login</label>
 					<p>
-					 <input type="text" id="username" name="username" placeholder="Email"/>
+						<input type="text" id="username" name="username" placeholder="User Name" />
 					</p>
 					<p>
-						 <input type="password" id="password" name="password" placeholder="Password"/>
+						<input type="password" id="password" name="password"
+							placeholder="Password" />
 					</p>
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
-					<input  id="button" type="submit" value="Login!" />
-				</form>
-				
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" /> <input id="button" type="submit"
+						value="Login!" />
+					</forqm>
 			</div>
 
 

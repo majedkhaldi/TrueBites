@@ -9,11 +9,11 @@ public class RController {
 	
 	@GetMapping("/foodDiary")
 	public String foodDiary() {
-		return "foodDairy.jsp";
+		return "foodDiary.jsp";
 	}
 
 	@GetMapping("/start")
 	public String start() {
-		return "start.jsp";
+		return "Home.jsp";
 	}
 }

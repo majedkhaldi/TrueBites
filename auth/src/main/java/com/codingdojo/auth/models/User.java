@@ -9,6 +9,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.annotation.Nullable;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -18,6 +19,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -53,6 +55,8 @@ public class User {
     private String gender;
     @Nullable
     private int age;
+    
+    
     @Nullable
     @Column(columnDefinition = "TEXT")
     private String activityLevels;
@@ -68,6 +72,9 @@ public class User {
     
     private Date createdAt;
     private Date updatedAt;
+    
+    @OneToOne(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    private Diary diary;
     
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -215,6 +222,16 @@ public class User {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(map);
     }
+
+	public Diary getDiary() {
+		return diary;
+	}
+
+	public void setDiary(Diary diary) {
+		this.diary = diary;
+	}
+    
+    
 }
 
 

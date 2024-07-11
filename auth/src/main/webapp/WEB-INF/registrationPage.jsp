@@ -13,29 +13,48 @@
 <body>
 	<div>
 		<div class="main">
-			<p>
-				<form:errors path="user.*" />
-			</p>
+			<input type="checkbox" id="chk" aria-hidden="true">
+			<div class="signup">
+				<p>
 
-			<form:form method="POST" action="/register" modelAttribute="user">
-				<label for="chk" aria-hidden="true">Sign up</label>
-				<p>
-					<form:input path="username" placeholder="Username" />
-				</p>
-				
-				<p>
-					<form:input path="email" placeholder="Email" />
+					<form:errors path="user.*" />
 				</p>
 
-				<p>
-					<form:password path="password" placeholder="Password" />
-				</p>
+				<form:form method="POST" action="/register" modelAttribute="user">
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<p>
+
+						<form:input path="username" placeholder="User Name" />
+
+					</p>
+
+					<p>
+
+						<form:password path="password" placeholder="Password" />
+					</p>
+					<p>
+						<form:password path="passwordConfirmation"
+							placeholder="Confirm Password" />
+					</p>
+					<input id="button" type="submit" value="Sign Up!" />
+				</form:form>
+			</div>
+			<div class="login">
+				<form method="POST" action="/login">
+					<label for="chk" aria-hidden="true">Login</label>
+					<p>
+					 <input type="text" id="username" name="username" placeholder="Email"/>
+					</p>
+					<p>
+						 <input type="password" id="password" name="password" placeholder="Password"/>
+					</p>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+					<input  id="button" type="submit" value="Login!" />
+				</form>
 				
-				<p>
-					<form:password path="passwordConfirmation" placeholder="Confirm Password" />
-				</p>
-				<input type="submit" value="Sign Up!" />
-			</form:form>
+			</div>
+
+
 		</div>
 	</div>
 </body>

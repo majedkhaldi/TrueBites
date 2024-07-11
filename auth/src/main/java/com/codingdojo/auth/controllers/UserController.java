@@ -49,7 +49,7 @@ public class UserController {
         }
         
         userService.saveUserWithAdminRole(user);
-        return "redirect:/login";
+        return "redirect:/more";
     }
     
  // NEW 
@@ -68,7 +68,7 @@ public class UserController {
         if(logout != null) {
             model.addAttribute("logoutMessage", "Logout Successful!");
         }
-        return "loginPage.jsp";
+        return "registrationPage.jsp";
     }
     
     

@@ -27,8 +27,8 @@
     
     <form method="POST" action="/login">
         <p>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username"/>
+            <label for="username">email</label>
+            <input type="text" id="username" name="email"/>
         </p>
         <p>
             <label for="password">Password</label>

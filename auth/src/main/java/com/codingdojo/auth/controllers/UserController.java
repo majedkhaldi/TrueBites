@@ -33,10 +33,7 @@ public class UserController {
         this.userService = userService;
         this.userValidator = userValidator;
     }
-    @GetMapping("/unregistered")
-    public String homepage() {
-    	return "homePage.jsp";
-    }
+
     
     @RequestMapping("/register")
     public String registerForm(@ModelAttribute("user") User user) {
@@ -128,6 +125,7 @@ public class UserController {
 				eer = tdee;
 		}
 		session.setAttribute("bmi", bmi);
+		thisuser.setEer(eer);
 		session.setAttribute("eer", eer);
 		session.setAttribute("idealWeight", idealWeight);
 		return"redirect:/profile/{id}";

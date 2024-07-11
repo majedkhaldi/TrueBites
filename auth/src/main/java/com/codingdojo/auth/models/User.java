@@ -56,6 +56,8 @@ public class User {
     @Nullable
     private int age;
     @Nullable
+    private int eer;
+    @Nullable
     @Column(columnDefinition = "TEXT")
     private String activityLevels;
     @Nullable
@@ -196,6 +198,14 @@ public class User {
 		this.activityLevel = activityLevelsMap.get(act);
 	}
 
+
+	public int getEer() {
+		return eer;
+	}
+
+	public void setEer(int eer) {
+		this.eer = eer;
+	}
 
 	public String getBmi() {
 		return bmi;

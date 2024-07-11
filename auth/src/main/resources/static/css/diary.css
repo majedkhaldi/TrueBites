@@ -1,4 +1,9 @@
 
+
+
+body{
+    background-image: url("../images/gray.png");
+}
 .card {
     width: 100%;
     max-width: 800px;

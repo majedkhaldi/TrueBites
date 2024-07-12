@@ -28,20 +28,20 @@
 				<option value="m">Male</option>
 				<option value="f">Female</option>
 			</select>
-			<select name="Goal" required> 
+			<select id="sel" name="Goal" required> 
 				<option value="0" disabled selected style="display: none;">Maintain</option>
 				<option value="1">Lose</option>
 				<option value="2">Gain</option>
 			</select>
-			<select name="activityLevel"  required>
+			<select name="activityLevel" id="sel"  required>
 				<option value="1.2" disabled selected style="display: none;">Sedentary:little or no exercise</option>
 				<option value="1.375">Lightly active: Exercise 1-3 times/week</option>
 				<option value="1.46">Lightly to moderately active:Exercise 4-5 times/week</option>
-				<option value="1.55"> : Daily exercise or intense exercise 3-4 times/week</option>
+				<option value="1.55">Moderately: Daily exercise or intense exercise 3-4 times/week</option>
 				<option value="1.725">Very active: Intense exercise 6-7 times/week</option>
 			</select> 
 			<input type="number" name="age" placeholder="Age" required>
-			<button type="submit">Submit</button>
+			<button id = "button" type="submit">Submit</button>
 		</form>
 	</div>
 	</div>

@@ -76,7 +76,7 @@ label {
 	transition: .5s ease-in-out;
 }
 
-input , select {
+select, input {
 	width: 60%;
 	height: 10px;
 	background: #e0dede;
@@ -90,7 +90,7 @@ input , select {
 	box-shadow: 2px 2px 2px gray;
 }
 
-button {
+#button {
 	width: 60%;
 	height: 40px;
 	margin: 10px auto;
@@ -108,7 +108,7 @@ button {
 	cursor: pointer;
 }
 
-button:hover {
+#button:hover {
 	background: black;
 	color: #ECECEC;
 }

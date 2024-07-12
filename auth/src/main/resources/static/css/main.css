@@ -376,12 +376,14 @@ font-weight: 300;
   height: 206px;
   width: 310px;
   margin-bottom: 20px;
+  border-radius: 8px;
 
 }
 .features .feature-item img.feature-image {
   width: 100%;
   height: auto;
   margin-bottom: 15px;
+  border-radius: 8px; 
 }
 .features .feature-item h3 {
   margin-bottom: 10px;
@@ -403,6 +405,9 @@ font-weight: 300;
     height: 500px;
     margin-top: 70px;
     margin-bottom: 70px;
+    border-radius: 8px;
+    
+    
 }
 
 

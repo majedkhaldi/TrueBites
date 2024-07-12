@@ -13,29 +13,59 @@
 <body>
 	<div>
 		<div class="main">
-			<p>
-				<form:errors path="user.*" />
-			</p>
+			<input type="checkbox" id="chk" aria-hidden="true">
+			<div class="signup">
+				<p>
 
-			<form:form method="POST" action="/register" modelAttribute="user">
-				<label for="chk" aria-hidden="true">Sign up</label>
-				<p>
-					<form:input path="username" placeholder="Username" />
-				</p>
-				
-				<p>
-					<form:input path="email" placeholder="Email" />
+					<form:errors path="user.*" />
 				</p>
 
-				<p>
-					<form:password path="password" placeholder="Password" />
-				</p>
-				
-				<p>
-					<form:password path="passwordConfirmation" placeholder="Confirm Password" />
-				</p>
-				<input type="submit" value="Sign Up!" />
-			</form:form>
+				<form:form method="POST" action="/register" modelAttribute="user">
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<p>
+
+						<form:input path="username" placeholder="User Name" />
+
+
+
+					</p>
+					<p>
+						<form:input path="email" placeholder="Email" />
+					</p>
+					<p>
+
+						<form:password path="password" placeholder="Password" />
+					</p>
+					<p>
+						<form:password path="passwordConfirmation"
+							placeholder="Confirm Password" />
+					</p>
+					<input id="button" type="submit" value="Sign Up!" />
+				</form:form>
+			</div>
+			<div class="login">
+				<c:if test="${logoutMessage != null}">
+					<c:out value="${logoutMessage}"></c:out>
+				</c:if>
+				<c:if test="${errorMessage != null}">
+					<c:out value="${errorMessage}"></c:out>
+				</c:if>
+				<form method="POST" action="/login">
+					<label for="chk" aria-hidden="true">Login</label>
+					<p>
+						<input type="text" id="username" name="username" placeholder="User Name" />
+					</p>
+					<p>
+						<input type="password" id="password" name="password"
+							placeholder="Password" />
+					</p>
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" /> <input id="button" type="submit"
+						value="Login!" />
+					</forqm>
+			</div>
+
+
 		</div>
 	</div>
 </body>

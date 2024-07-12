@@ -65,7 +65,8 @@ import jakarta.persistence.Table;
   
   
   
-  public Diary() {
+  public Diary(User user) {
+	  this.user = user;
 	  
 	  
   

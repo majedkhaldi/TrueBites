@@ -42,7 +42,7 @@ public class User {
     // NEW
     @Size(min=5)
     private String password;
-    
+ 
     @Transient
     @NotEmpty()
 	@Size(min = 8)
@@ -57,6 +57,8 @@ public class User {
     private int age;
     
     
+    @Nullable
+    private int eer;
     @Nullable
     @Column(columnDefinition = "TEXT")
     private String activityLevels;
@@ -119,6 +121,14 @@ public class User {
 	 public void setUsername(String username) {
 	     this.username = username;
 	 }
+	 
+	 public String getEmail() {
+	     return email;
+	 }
+	 public void setEmail(String email) {
+	     this.email = email;
+	 }
+	 
 	 public String getPassword() {
 	     return password;
 	 }
@@ -201,6 +211,14 @@ public class User {
 		this.activityLevel = activityLevelsMap.get(act);
 	}
 
+
+	public int getEer() {
+		return eer;
+	}
+
+	public void setEer(int eer) {
+		this.eer = eer;
+	}
 
 	public String getBmi() {
 		return bmi;

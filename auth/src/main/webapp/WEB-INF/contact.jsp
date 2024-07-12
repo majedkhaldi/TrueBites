@@ -61,7 +61,7 @@
 					</div>
 					<div class="col-lg-8 col-xs-12 text-left">
 						<ul class="nav-links">
-							<li><a class="nav-link" href="/start">Home</a></li>
+							<li><a class="nav-link" href="/">Home</a></li>
 							<li><a class="nav-link" href="#">About Us</a></li>
 							<li><a class="nav-link" href="#">Features</a></li>
 						</ul>

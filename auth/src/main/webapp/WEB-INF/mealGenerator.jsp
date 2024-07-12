@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
     <link rel="stylesheet" href="/css/animate.css">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/mealGenerator.css">
     <title>Feast</title>
   </head>
   <body>
@@ -82,40 +83,12 @@
  <!-- container Ended-->
 </section>
 
-<section class="features">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="heading" data-aos="fade-up" data-aos-delay="300">
-          <h2 class="featurs-h2"> What makes us different?</h2>
-        </div>
-      </div>
+<section class="meal-gen-box">
 
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
-        <div class="feature-item">
-          <img src="images/plann.webp" alt="Personalized Plan" class="feature-image1">
-          <h3>Personalized Plan</h3>
-          <p>Achieve your health goals with a plan tailored to you. TrueBites will create a customized and effective nutrition plan based  on  your  own  information.</p>
-        </div>
-      </div>
-
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
-        <div class="feature-item">
-          <img src="images/meal.jpeg" alt="Customized Meals" class="feature-image">
-          <h3>Customized Meals</h3>
-          <p>Enjoy delicious meals that suit your dietary needs. TrueBites offers a variety of meal ideas every single day that make healthy eating easy and enjoyable.</p>
-        </div>
-      </div>
-
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
-        <div class="feature-item">
-          <img src="images/diary.png" alt="Food Diary" class="feature-image1">
-          <h3>Food Diary</h3>
-          <p>Track your eating habits with our intuitive food diary. Log your meals, monitor your progress, and stay accountable with TrueBite.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+	<!--  CSS included at the bottom of main.css & in  mealGenerator.css -->
+      <div class="mealGenBox"></div>
+      <div class="mealGenBox"></div>
+      <div class="mealGenBox"></div>
 
 </section>
 
@@ -144,7 +117,10 @@
                    <p >
                     In today's world, the field of nutrition is often clouded with conflicting information and shocking articles that demonize certain foods. These misleading narratives can create confusion and unhealthy relationships with food. Our website’s idea is built on the fundamental belief that there are no inherently "bad" foods. Instead, we advocate for a balanced and informed approach to nutrition, emphasizing that all foods can be enjoyed in moderation as part of a healthy lifestyle.
                    </p>
-                   <p >Our mission is to challenge the prevalent myths that dominate much of the nutritional discourse. We aim to provide evidence-based information and practical tools that empower individuals to make well-informed dietary choices without guilt or fear. By promoting the idea that all foods can fit into a balanced diet, we hope to foster a more positive and sustainable approach to eating. To achieve this, our website will feature a variety of tools and resources designed to help users understand their nutritional needs and make healthier choices.</p>
+                   <p >Our mission is to challenge the prevalent myths that dominate much of the nutritional discourse. We aim to provide evidence-based information and practical tools that empower individuals to make well-informed dietary choices without guilt or fear. By promoting the idea that all foods can fit into a balanced diet, we hope to foster a more positive and sustainable approach to eating. To achieve this, our website will feature a variety of tools and resources designed to help users understand their nutritional needs and make healthier choices. 
+                  </p>
+                  <p >Ultimately, our goal is to debunk nutritional myths, promote moderation, and support our users in leading healthier, more balanced lives. We believe that by providing clear, accurate, and unbiased information, we can help individuals navigate the often confusing world of nutrition with confidence and clarity.
+                  </p>
                 </div>
             </div>
 

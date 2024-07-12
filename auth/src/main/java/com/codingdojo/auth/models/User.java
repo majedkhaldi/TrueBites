@@ -38,10 +38,10 @@ public class User {
     private Long id;
     
 
-    @Email()
+    @Email
     private String email;
-    
-    @NotNull
+
+	@NotNull
     @Size(min=3)
     private String username;
     
@@ -260,6 +260,14 @@ public class User {
 		this.diary = diary;
 	}
     
+    
+    public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
     
 }
 

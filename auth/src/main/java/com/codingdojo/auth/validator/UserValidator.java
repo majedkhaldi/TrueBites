@@ -16,15 +16,12 @@ public class UserValidator implements Validator {
     }
     
     // 2
-    // Creating our custom validation, we can add errors via .rejectValue(String, String).
     @Override
     public void validate(Object object, Errors errors) {
         User user = (User) object;
         
         if (!user.getPasswordConfirmation().equals(user.getPassword())) {
             // 3
-        	// the 1st argument is the member variable of our Domain model that we are validating. 
-        	// The 2nd argument is a code for us to use to set an error message.
             errors.rejectValue("passwordConfirmation", "Match");
         }         
     }

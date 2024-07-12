@@ -45,7 +45,7 @@ public class User {
  
     @Transient
     @NotEmpty()
-	@Size(min = 8)
+	@Size(min = 5)
     private String passwordConfirmation;
     @Nullable
     private int height;

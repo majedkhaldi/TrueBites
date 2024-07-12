@@ -24,7 +24,6 @@ public class WebSecurityConfig {
 	    return new BCryptPasswordEncoder();
 	  }
     
-    
   @Bean
   protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception{		
     http
@@ -49,7 +48,5 @@ public class WebSecurityConfig {
 
     return http.build();
   }
-    
-    // removed for brevity
 }
 

@@ -36,13 +36,13 @@
        <!--Row Start-->
        <div class="row">
             <div class="col-lg-4 col-xs-9">
-                <a href="index.html"><img id="logo" src="/images/image.png" alt="logo"></a>
+                <a href="/"><img id="logo" src="/images/image.png" alt="logo"></a>
             </div>
             <div class="col-lg-8 col-xs-12 text-left">
                 <ul class="nav-links">
                     <li><a class="nav-link" href="/contact">Contact Us</a></li>
-                    <li><a class="nav-link" href="#">About Us</a></li>
-                    <li><a class="nav-link" href="#">Features</a></li>
+                    <li><a class="nav-link" onmouseover="change(this)" href="#abouts">About Us</a></li>
+                    <li><a class="nav-link" onmouseover="change(this)" href="#features">Features</a></li>
                 </ul>
             </div>
         </div>
@@ -74,7 +74,7 @@
           <h2 data-aos="fade-left" data-aos-delay="500">Truth in Every Bite.</h2>
           <h4 data-aos="fade-left" data-aos-delay="700">Discover a healthier version of yourself with TrueBites <span> where science-driven eating meets personalized nutrition for a smarter, happier lifestyle.</span></h4>
           <p data-aos="fade-left" data-aos-delay="900"></p>
-          <a class="btn btn-success" href="/registrationPage" role="button" data-aos="fade-up" data-aos-delay="1000">Get Started</a>
+          <a class="btn btn-success" href="/registrationPage" id="features" role="button" data-aos="fade-up" data-aos-delay="1000">Get Started</a>
           </div>
       </div>
      <!--Row Ended-->
@@ -82,7 +82,7 @@
  <!-- container Ended-->
 </section>
 
-<section class="features">
+<section  class="features">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
@@ -91,7 +91,7 @@
         </div>
       </div>
 
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+      <div  class="col-md-4" data-aos="fade-up" data-aos-delay="400">
         <div class="feature-item">
           <img src="images/plann.webp" alt="Personalized Plan" class="feature-image1">
           <h3>Personalized Plan</h3>
@@ -111,7 +111,7 @@
         <div class="feature-item">
           <img src="images/diary.png" alt="Food Diary" class="feature-image1">
           <h3>Food Diary</h3>
-          <p>Track your eating habits with our intuitive food diary. Log your meals, monitor your progress, and stay accountable with TrueBite.</p>
+          <p id="abouts">Track your eating habits with our intuitive food diary. Log your meals, monitor your progress, and stay accountable with TrueBite.</p>
         </div>
       </div>
     </div>
@@ -128,16 +128,16 @@
 
 
 <!-- About section Ended-->
-<section class="about">
+<section  class="about">
   <!-- Page Content -->
-  <div class="container">
+  <div  class="container">
      <div class="row">
          <div class="col-lg-6 col-sm-12" data-aos="fade-right" data-aos-delay="300">
             <a href="#" class="d-block">
               <img id="about" class="img-fluid img-thumbnail" src="images/aboutus.jpg" alt="about-bg">
             </a>
          </div>
-         <div class="col-lg-6 col-sm-12">
+         <div  class="col-lg-6 col-sm-12">
             <div class="row" data-aos="fade-left" data-aos-delay="500">
                 <div class="col-sm-12">
                     <h2>About <span>TrueBites</span></h2>

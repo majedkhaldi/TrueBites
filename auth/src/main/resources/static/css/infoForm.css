@@ -103,6 +103,7 @@ select{
 	outline: none;
 	border-radius: 5px;
 	box-shadow: 2px 2px 2px gray;
+	color:gray;
 }
 
 input {
@@ -117,6 +118,20 @@ input {
 	outline: none;
 	border-radius: 5px;
 	box-shadow: 2px 2px 2px gray;
+	
+}
+.default{
+	
+	display: none;
+}
+select:hover{
+	color:black;
+}
+
+
+
+select option:first-child {
+    color: gray; /* Default option color */
 }
 
 #button {

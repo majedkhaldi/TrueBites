@@ -9,6 +9,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.annotation.Nullable;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -18,11 +19,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
@@ -34,15 +35,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Email()
-    private String email;
-    
+    // NEW
     @Size(min=3)
     private String username;
     
+    // NEW
     @Size(min=5)
     private String password;
- 
+    
     @Transient
     @NotEmpty()
 	@Size(min = 8)
@@ -55,8 +55,8 @@ public class User {
     private String gender;
     @Nullable
     private int age;
-    @Nullable
-    private int eer;
+    
+    
     @Nullable
     @Column(columnDefinition = "TEXT")
     private String activityLevels;
@@ -72,6 +72,9 @@ public class User {
     
     private Date createdAt;
     private Date updatedAt;
+    
+    @OneToOne(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    private Diary diary;
     
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -116,14 +119,6 @@ public class User {
 	 public void setUsername(String username) {
 	     this.username = username;
 	 }
-	 
-	 public String getEmail() {
-	     return email;
-	 }
-	 public void setEmail(String email) {
-	     this.email = email;
-	 }
-	 
 	 public String getPassword() {
 	     return password;
 	 }
@@ -207,14 +202,6 @@ public class User {
 	}
 
 
-	public int getEer() {
-		return eer;
-	}
-
-	public void setEer(int eer) {
-		this.eer = eer;
-	}
-
 	public String getBmi() {
 		return bmi;
 	}
@@ -235,6 +222,16 @@ public class User {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(map);
     }
+
+	public Diary getDiary() {
+		return diary;
+	}
+
+	public void setDiary(Diary diary) {
+		this.diary = diary;
+	}
+    
+    
 }
 
 

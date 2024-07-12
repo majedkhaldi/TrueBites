@@ -13,8 +13,15 @@ import com.codingdojo.auth.models.Snack;
 
 @Repository
 public interface BrinnerRepository extends JpaRepository<Brinner, Long> {
+
+	
+	
     List<Brinner> findByRecommended(int r);
     List<Brinner> findByTypeAndRecommended(String type, int r);
+    List<Brinner> findByFoodContainingIgnoreCase(String food);
+    
+
+
 }
 
 

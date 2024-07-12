@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- c:out ; c:forEach etc. --> 
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
@@ -18,7 +17,7 @@
     <meta name="author" content="">
     
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
@@ -27,76 +26,26 @@
     <link rel="stylesheet" href="/css/diary.css">
     <title>Feast</title>
     <style>
-        body {
-            background-color: #f7f7f7;
-            font-family: 'Montserrat', sans-serif;
-            padding: 20px;
-        }
-        .top {
-            margin-bottom: 20px;
-        }
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .card {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 1200px;
-            margin-bottom: 20px;
-            height: auto;
-            margin-left: auto;
-            margin-top: 150px;
-        }
-        .meal-option {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            font-size: 18px;
-        }
-        .plus-sign {
-            cursor: pointer;
-            color: #007bff;
-        }
         .search-bar {
-            display: none;
-            margin-bottom: 10px;
+            width: 300px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
         }
-        .calorie-counter, .macro-counter {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .calorie-counter canvas, .macro-counter canvas {
-            max-width: 100%;
-            margin: 0 auto;
-        }
-        .calorie-counter h2, .macro-counter h2 {
-            color: #333333;
-            margin: 10px 0;
-            font-size: 36px;
-            font-weight: 700;
-        }
-        .calorie-counter p, .macro-counter p {
-            color: #666666;
-            margin: 5px 0;
-            font-size: 14px;
-        }
-        .macro-counter .macro-line {
+        .search-bar input {
             width: 100%;
-            height: 15px;
-            border-radius: 10px;
-            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 17px;
+            border: 1px solid #dcdcdc;
+            border-radius: 5px;
+            outline: none;
         }
-        .macro-protein { background-color: #de4b07; }
-        .macro-fats { background-color: #666666; }
-        .macro-carbs { background-color: #00b33c; }
+        .search-results {
+            margin-top: 10px;
+        }
+        .search-results div {
+            padding: 5px 0;
+        }
     </style>
 </head>
 <body>
@@ -126,7 +75,7 @@
     <script>
         window.addEventListener('scroll', function() {
             var navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) { // Adjust the scroll value as needed
+            if (window.scrollY > 50) {
                 navbar.classList.add('show-nav-links');
             } else {
                 navbar.classList.remove('show-nav-links');
@@ -142,34 +91,93 @@
             <div class="card-container">
                 <div class="card">
                     <h3>Food Diary</h3>
-                    <div class="meal-option">
-                        <span>Breakfast</span>
-                        <span class="plus-sign" data-target="#breakfast-search">+</span>
-                    </div>
-                    <div id="breakfast-search" class="search-bar">
-                        <input type="text" class="form-control" placeholder="Search for breakfast options...">
-                    </div>
-                    <div class="meal-option">
-                        <span>Lunch</span>
-                        <span class="plus-sign" data-target="#lunch-search">+</span>
-                    </div>
-                    <div id="lunch-search" class="search-bar">
-                        <input type="text" class="form-control" placeholder="Search for lunch options...">
-                    </div>
-                    <div class="meal-option">
-                        <span>Dinner</span>
-                        <span class="plus-sign" data-target="#dinner-search">+</span>
-                    </div>
-                    <div id="dinner-search" class="search-bar">
-                        <input type="text" class="form-control" placeholder="Search for dinner options...">
-                    </div>
-                    <div class="meal-option">
-                        <span>Snack</span>
-                        <span class="plus-sign" data-target="#snack-search">+</span>
-                    </div>
-                    <div id="snack-search" class="search-bar">
-                        <input type="text" class="form-control" placeholder="Search for snack options...">
-                    </div>
+                    <form action="/searchBrinner" method="get">
+                        <div class="meal-option">
+                            <span>Breakfast</span>
+                            <span class="plus-sign" data-target="#breakfast-search">+</span>
+                        </div>
+                        <div id="breakfast-search" class="search-bar">
+                            <input type="text" class="form-control" name="query" placeholder="Search for breakfast options...">
+                            <input type="hidden" name="type" value="breakfast">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                            <div class="search-results" id="breakfast-results">
+                                <c:if test="${type == 'breakfast'}">
+                                    <c:forEach var="result" items="${results}">
+                                        <form action="/addToDiary/${result.id}" method="post">
+                                            <div>${result.food} (${result.calories} kcal)</div>
+                                            <button type="submit" class="btn btn-secondary">Add</button>
+                                        </form>
+                                    </c:forEach>
+                                </c:if>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <form action="/searchBrinner" method="get">
+                        <div class="meal-option">
+                            <span>Lunch</span>
+                            <span class="plus-sign" data-target="#lunch-search">+</span>
+                        </div>
+                        <div id="lunch-search" class="search-bar">
+                            <input type="text" class="form-control" name="query" placeholder="Search for lunch options...">
+                            <input type="hidden" name="type" value="lunch">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                            <div class="search-results" id="lunch-results">
+                                <c:if test="${type == 'lunch'}">
+                                    <c:forEach var="result" items="${results}">
+                                        <form action="/addToDiary/${result.id}" method="post">
+                                            <div>${result.food} (${result.calories} kcal)</div>
+                                            <button type="submit" class="btn btn-secondary">Add</button>
+                                        </form>
+                                    </c:forEach>
+                                </c:if>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <form action="/searchBrinner" method="get">
+                        <div class="meal-option">
+                            <span>Dinner</span>
+                            <span class="plus-sign" data-target="#dinner-search">+</span>
+                        </div>
+                        <div id="dinner-search" class="search-bar">
+                            <input type="text" class="form-control" name="query" placeholder="Search for dinner options...">
+                            <input type="hidden" name="type" value="dinner">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                            <div class="search-results" id="dinner-results">
+                                <c:if test="${type == 'dinner'}">
+                                    <c:forEach var="result" items="${results}">
+                                        <form action="/addToDiary/${result.id}" method="post">
+                                            <div>${result.food} (${result.calories} kcal)</div>
+                                            <button type="submit" class="btn btn-secondary">Add</button>
+                                        </form>
+                                    </c:forEach>
+                                </c:if>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <form action="/searchBrinner" method="get">
+                        <div class="meal-option">
+                            <span>Snack</span>
+                            <span class="plus-sign" data-target="#snack-search">+</span>
+                        </div>
+                        <div id="snack-search" class="search-bar">
+                            <input type="text" class="form-control" name="query" placeholder="Search for snack options...">
+                            <input type="hidden" name="type" value="snack">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                            <div class="search-results" id="snack-results">
+                                <c:if test="${type == 'snack'}">
+                                    <c:forEach var="result" items="${results}">
+                                        <form action="/addToDiary/${result.id}" method="post">
+                                            <div>${result.food} (${result.calories} kcal)</div>
+                                            <button type="submit" class="btn btn-secondary">Add</button>
+                                        </form>
+                                    </c:forEach>
+                                </c:if>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -192,6 +200,7 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.querySelectorAll('.plus-sign').forEach(function(plusSign) {
@@ -210,7 +219,7 @@
     });
 
     const totalCalories = 1600;
-    const consumedCalories = 1200;
+    const consumedCalories = 896;
     const remainingCalories = totalCalories - consumedCalories;
 
     const data = {
@@ -262,3 +271,10 @@
 
 </body>
 </html>
+
+
+
+
+
+
+

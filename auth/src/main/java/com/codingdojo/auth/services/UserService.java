@@ -4,15 +4,19 @@ import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.codingdojo.auth.models.Diary;
 import com.codingdojo.auth.models.User;
+import com.codingdojo.auth.repositories.DiaryRepository;
 import com.codingdojo.auth.repositories.RoleRepository;
 import com.codingdojo.auth.repositories.UserRepository;
  
 @Service
 public class UserService {
     private UserRepository userRepository;
+    private DiaryRepository diaryRepository;
     private RoleRepository roleRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+   
     
     public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder)     {
         this.userRepository = userRepository;
@@ -24,7 +28,11 @@ public class UserService {
     public void saveWithUserRole(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles(roleRepository.findByName("ROLE_USER"));
+        Diary diary = new Diary(user);
+        diaryRepository.save(diary);
+        user.setDiary(diary);
         userRepository.save(user);
+  
     }
      
      // 2 

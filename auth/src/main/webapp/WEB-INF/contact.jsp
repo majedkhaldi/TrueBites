@@ -56,14 +56,14 @@
 				<!--Row Start-->
 				<div class="row">
 					<div class="col-lg-4 col-xs-9">
-						<a href="index.html"><img id="logo" src="/images/image.png"
+						<a href="/"><img id="logo" src="/images/image.png"
 							alt="logo"></a>
 					</div>
 					<div class="col-lg-8 col-xs-12 text-left">
 						<ul class="nav-links">
 							<li><a class="nav-link" href="/">Home</a></li>
-							<li><a class="nav-link" href="#">About Us</a></li>
-							<li><a class="nav-link" href="#">Features</a></li>
+							<li><a class="nav-link" href="#about"><button onmouseover="change(this)">About Us</button></a></li>
+							<li><a class="nav-link" href="#features"><button onmouseover="change(this)">Features</button></a></li>
 						</ul>
 					</div>
 				</div>
@@ -147,16 +147,16 @@
 					<!-- Grid column -->
 					<div class="col-lg-6 col-sm-6 col1">
 						<div class="heading" data-aos="fade-right" data-aos-delay="300">
-							<h5>Do You Have Any Questions?</h5>
-							<h3>Feel Free To Contact Us</h3>
+							<h5>Want to improve your diet?</h5>
+							<h3>Join us today!</h3>
 						</div>
 					</div>
 					<div class="col-lg-6 col-sm-6 col1">
-						<form>
+						<form action="/registrationPage">
 							<div class="input-group" data-aos="fade-left"
 								data-aos-duration="800">
 								<!-- <input name="email" id="email" type="email" placeholder="Enter your email id" required> -->
-								<button class="btn btn-info" type="submit">Contact Us</button>
+								<button class="btn btn-info" type="submit">Register</button>
 							</div>
 						</form>
 					</div>

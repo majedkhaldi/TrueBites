@@ -29,6 +29,7 @@ public class WebSecurityConfig {
   @Bean
   protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception{		
     http
+    
 	.authorizeHttpRequests(
 	  auth -> auth.requestMatchers(
 		new MvcRequestMatcher(introspector, "/admin/**")

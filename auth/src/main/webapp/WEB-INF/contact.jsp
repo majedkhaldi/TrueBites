@@ -94,6 +94,7 @@
 				</div>
 				<form class="contact1-form validate-form"
 					action="${pageContext.request.contextPath}/contact" method="post">
+					    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					<span class="contact1-form-title"> Get in touch </span>
 
 					<div class="wrap-input1 validate-input"

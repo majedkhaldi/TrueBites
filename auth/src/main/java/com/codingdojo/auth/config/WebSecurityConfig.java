@@ -3,6 +3,7 @@ package com.codingdojo.auth.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -33,7 +34,7 @@ public class WebSecurityConfig {
 		new MvcRequestMatcher(introspector, "/admin/**")
 		).hasRole("ADMIN")
 	  .requestMatchers(
-		new MvcRequestMatcher(introspector, "/profile"),
+		new MvcRequestMatcher(introspector, "/profile/**"),
 		new MvcRequestMatcher(introspector, "/home"),
 		new MvcRequestMatcher(introspector, "/more")
 		).authenticated()
@@ -51,6 +52,8 @@ public class WebSecurityConfig {
     return http.build();
   }
     
-    // removed for brevity
+  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	    auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+	  }
 }
 

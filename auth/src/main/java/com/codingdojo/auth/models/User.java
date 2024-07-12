@@ -25,6 +25,7 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -35,11 +36,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    // NEW
+
+    @Email()
+    private String email;
+    
+    @NotNull
     @Size(min=3)
     private String username;
     
-    // NEW
+    @NotNull
     @Size(min=5)
     private String password;
  

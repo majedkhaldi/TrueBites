@@ -61,7 +61,7 @@
 					</div>
 					<div class="col-lg-8 col-xs-12 text-left">
 						<ul class="nav-links">
-							<li><a class="nav-link" href="/start">Home</a></li>
+							<li><a class="nav-link" href="/">Home</a></li>
 							<li><a class="nav-link" href="#">About Us</a></li>
 							<li><a class="nav-link" href="#">Features</a></li>
 						</ul>
@@ -94,6 +94,7 @@
 				</div>
 				<form class="contact1-form validate-form"
 					action="${pageContext.request.contextPath}/contact" method="post">
+					    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					<span class="contact1-form-title"> Get in touch </span>
 
 					<div class="wrap-input1 validate-input"

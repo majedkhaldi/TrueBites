@@ -24,6 +24,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -37,10 +38,10 @@ public class User {
     private Long id;
     
 
-    @Email()
+    @Email
     private String email;
-    
-    @NotNull
+
+	@NotNull
     @Size(min=3)
     private String username;
     
@@ -251,6 +252,14 @@ public class User {
 		this.diary = diary;
 	}
     
+    
+    public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
     
 }
 

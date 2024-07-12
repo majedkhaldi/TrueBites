@@ -120,6 +120,28 @@ input {
 	box-shadow: 2px 2px 2px gray;
 	
 }
+#buttons{
+	width: 60%;
+	height: 40px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: #de4b07;
+	background: #ECECEC;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 30px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+	box-shadow: 2px 2px 2px gray;
+}
+#buttons:hover {
+	background: black;
+	color: #ECECEC;
+}
 .default{
 	
 	display: none;

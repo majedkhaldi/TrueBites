@@ -194,6 +194,10 @@ header .social-icons i {
 .nav-link{
     color: #de4b07;
 }
+#a{
+	padding-left: 52px
+	
+}
 
 
 header .social-icons i:hover {color: rgba(246, 232, 225)}

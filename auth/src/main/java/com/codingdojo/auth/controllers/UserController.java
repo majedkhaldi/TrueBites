@@ -2,6 +2,11 @@ package com.codingdojo.auth.controllers;
 
 import java.security.Principal;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,6 +38,8 @@ public class UserController {
         this.userService = userService;
         this.userValidator = userValidator;
     }
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     
     @RequestMapping("/registrationPage")
@@ -41,7 +48,7 @@ public class UserController {
     }
     
     @PostMapping("/register")
-    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
         userValidator.validate(user, result);
         if (result.hasErrors()) {
             return "registrationPage.jsp";
@@ -55,8 +62,15 @@ public class UserController {
             return "registrationPage.jsp";
         }
 
+        // Log the user in after successful registration
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
+        Authentication authentication = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        // Redirect to "/more" route
         return "redirect:/more";
     }
+
 
     
  // NEW 

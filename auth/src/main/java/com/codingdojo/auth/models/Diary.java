@@ -4,6 +4,8 @@
   import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,6 +16,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
   
@@ -33,7 +37,9 @@ import jakarta.persistence.Table;
   
   
   @Column(updatable=false)
+  @DateTimeFormat(pattern="yyyy-MM-dd")
   private Date createdAt;
+  @DateTimeFormat(pattern="yyyy-MM-dd")
   private Date updatedAt;
   
   @ManyToMany(fetch = FetchType.LAZY)
@@ -188,6 +194,14 @@ public void setUser(User user) {
 
 public void setBrinneritems(List<Brinner> brinneritems) {
 	this.brinneritems = brinneritems;
+}
+@PrePersist
+protected void onCreate(){
+    this.createdAt = new Date();
+}
+@PreUpdate
+protected void onUpdate(){
+    this.updatedAt = new Date();
 }
   
   }

@@ -14,12 +14,14 @@
 <body>
     <h1>Generated Meal Plans</h1>
     <c:forEach var="plan" items="${mealPlans}">
+    
         <h2>Meal Plan</h2>
-        <p>Breakfast: ${plan.breakfast}</p>
-        <p>Snack 1: ${plan.snack1}</p>
-        <p>Lunch: ${plan.lunch}</p>
-        <p>Snack 2: ${plan.snack2}</p>
-        <p>Dinner: ${plan.dinner}</p>
+        
+        <p>Breakfast: <c:forEach var="meal" items="${plan.breakfast}">${meal.food}</c:forEach></p>
+        <p>Snack 1: <c:forEach var="meal" items="${plan.snack1}"> ${meal.food}</c:forEach></p>
+        <p>Lunch: <c:forEach var="meal" items="${plan.lunch}">${meal.food}</c:forEach></p>
+        <p>Snack 2: <c:forEach var="meal" items="${plan.snack2}"> ${meal.food}</c:forEach></p>
+        <p>Dinner:<c:forEach var="meal" items="${plan.dinner}"> ${meal.food}</c:forEach></p>
     </c:forEach>
 </body>
 </html>

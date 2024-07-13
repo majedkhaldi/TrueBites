@@ -29,13 +29,13 @@
         <option value="m">Male</option>
         <option value="f">Female</option>
     </select>
-    <select name="Goal" required>
+    <select name="goal" required>
         <option class="default"  disabled selected >Goal</option>
         <option value="0">Maintain</option>
         <option value="1">Lose</option>
         <option value="2">Gain</option>
     </select>
-    <select name="activityLevel" required>
+    <select name="activity" required>
         <option class="default" disabled selected >Activity Level</option>
         <option value="1.2">Sedentary: little or no exercise</option>
         <option value="1.375">Lightly active: Exercise 1-3 times/week</option>

@@ -14,47 +14,47 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 // imports removed for brevity
 @Configuration
 public class WebSecurityConfig {
-	
-	@Autowired HandlerMappingIntrospector introspector;
-	
-	private UserDetailsService userDetailsService;
+ 
+ @Autowired HandlerMappingIntrospector introspector;
+ 
+ private UserDetailsService userDetailsService;
   
   // Add BCrypt Bean
-	  @Bean
-	  public BCryptPasswordEncoder bCryptPasswordEncoder() {
-	    return new BCryptPasswordEncoder();
-	  }
+   @Bean
+   public BCryptPasswordEncoder bCryptPasswordEncoder() {
+     return new BCryptPasswordEncoder();
+   }
     
   @Bean
-  protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception{		
+  protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception{  
     http
-    
-	.authorizeHttpRequests(
-	  auth -> auth.requestMatchers(
-		new MvcRequestMatcher(introspector, "/admin/**")
-		).hasRole("ADMIN")
-	  .requestMatchers(
-		new MvcRequestMatcher(introspector, "/profile/**"),
-		new MvcRequestMatcher(introspector, "/home"),
-		new MvcRequestMatcher(introspector, "/more")
-		).authenticated()
-	  .anyRequest().permitAll()
-	  )
-	.formLogin(
-	  form -> form.loginPage("/login")
-	  .defaultSuccessUrl("/home")
-	  .permitAll()
-	  )
-	.logout(
-	  logout -> logout.permitAll()
-	);
+.authorizeHttpRequests(
+   auth -> auth.requestMatchers(
+  new MvcRequestMatcher(introspector, "/admin/**")
+  ).hasRole("ADMIN")
+   .requestMatchers(
+  new MvcRequestMatcher(introspector, "/profile/**"),
+  new MvcRequestMatcher(introspector, "/home"),
+  new MvcRequestMatcher(introspector, "/more")
+  ).authenticated()
+   .anyRequest().permitAll()
+   )
+ .formLogin(
+   form -> form.loginPage("/login")
+   .defaultSuccessUrl("/more")
+   .permitAll()
+   )
+ .logout(
+   logout -> logout.permitAll()
+ );
+
 
     return http.build();
   }
-  @Autowired
+    
   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-	    auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
-	  }
+     auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+   }
+
 
 }
-

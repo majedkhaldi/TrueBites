@@ -3,10 +3,6 @@ package com.codingdojo.auth.controllers;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.codingdojo.auth.models.Diary;
 import com.codingdojo.auth.models.User;
+import com.codingdojo.auth.services.DiaryService;
 import com.codingdojo.auth.services.UserService;
 import com.codingdojo.auth.validator.UserValidator;
 
@@ -29,6 +27,8 @@ import jakarta.validation.Valid;
 @Controller
 public class UserController {
 	private UserService userService;
+	@Autowired
+	DiaryService diaryService;
 	
 	// NEW
     private UserValidator userValidator;
@@ -38,8 +38,6 @@ public class UserController {
         this.userService = userService;
         this.userValidator = userValidator;
     }
-    @Autowired
-    private AuthenticationManager authenticationManager;
 
     
     @RequestMapping("/registrationPage")
@@ -48,31 +46,16 @@ public class UserController {
     }
     
     @PostMapping("/register")
-
-    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
-
+    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+        // NEW
         userValidator.validate(user, result);
         if (result.hasErrors()) {
             return "registrationPage.jsp";
         }
-
-        try {
-            userService.saveUserWithAdminRole(user);
-        } catch (RuntimeException e) {
-            // Assuming the exception message is "User already exists with this email"
-            result.rejectValue("email", "error.user", e.getMessage());
-            return "registrationPage.jsp";
-        }
-
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
-        Authentication authentication = authenticationManager.authenticate(token);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        return "redirect:/more";
+        
+        userService.saveUserWithAdminRole(user);
+        return "redirect:/";
     }
-
-
-
     
  // NEW 
     @RequestMapping("/admin")
@@ -83,7 +66,7 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout,Model model) {
+    public String login(@Valid @ModelAttribute("user") User user, BindingResult result,@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout,Model model) {
         if(error!=null ) {
             model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
         }
@@ -91,8 +74,9 @@ public class UserController {
             model.addAttribute("logoutMessage", "Logout Successful!");
         }
         
+        
         System.out.println("--------->");
-        return "loginPage.jsp";
+        return "registrationPage.jsp";
     }
     
     
@@ -115,12 +99,16 @@ public class UserController {
 			@RequestParam("activity") double act,
 			@RequestParam("goal") int goal) {
 		User thisuser = userService.findById(id);
+	System.out.println("*******" + thisuser.getId());
 		thisuser.setHeight(h);
 		thisuser.setWeight(w);
 		thisuser.setGender(g);
 		thisuser.setAge(a);
 		thisuser.setActivitylevel(act);
 		thisuser.setGoal(goal);
+
+		
+		
 		if (thisuser.getAge()<18) {
 			return "under-18.jsp";
 		}
@@ -150,8 +138,14 @@ public class UserController {
 			default:
 				eer = tdee;
 		}
+		Diary diary = new Diary();
+        diary.setUser(thisuser);
+        diary.setCalories(eer);
+        thisuser.setDiary(diary);
+        diaryService.saveDiary(diary);
 		session.setAttribute("bmi", bmi);
 		thisuser.setEer(eer);
+		userService.updateUser(thisuser);
 		session.setAttribute("eer", eer);
 		session.setAttribute("idealWeight", idealWeight);
 		return"redirect:/profile/{id}";
@@ -161,6 +155,9 @@ public class UserController {
 	@GetMapping("/profile/{id}")
 	public String showProfile(@PathVariable("id") Long id, HttpSession session, Model model) {
 		User thisuser = userService.findById(id);
+		if(thisuser.getAge()<18) {
+			return "redirect:/logoutt";
+		}
 		double bmiValue = (double) session.getAttribute("bmi");
 		if (bmiValue <18.5) {
 			thisuser.setBmi("Underweight");
@@ -174,27 +171,33 @@ public class UserController {
 		else if (30.0 < bmiValue) {
 			thisuser.setBmi("Obese");
 		}
-		
+		System.out.println("***************" + thisuser.getWeight());
 		model.addAttribute("thisuser", thisuser);
 		model.addAttribute("choreq", (int)((int)session.getAttribute("eer")*0.45));
 		model.addAttribute("proreq", (int)((int)session.getAttribute("eer")*0.35));
 		model.addAttribute("fatreq", (int)((int)session.getAttribute("eer")*0.20));
-		return "xyz.jsp";
+		return "profile.jsp";
 
 	}
 	//Additional info form
 	@GetMapping("/more")
-	public String moreForm(Principal principal, Model model) {
+	public String moreForm( Principal principal, Model model) {
 		String thisusername= principal.getName();
 		User user = userService.findByUsername(thisusername);
 		Long id = user.getId();
 		model.addAttribute("user", id);
+
 		if(user.getGender() == null) {
 			return "additionalInfo.jsp";
 		}
-			
+
 		
-		return "redirect:/profile/{id}";
+		return "redirect:/profile/" + user.getId();
+	}
+	@GetMapping("/logoutt")
+	public String logoutt(Principal principal) {
+		principal= null;
+		return "redirect:/";
 	}
 
 }

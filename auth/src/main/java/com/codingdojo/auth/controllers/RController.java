@@ -12,7 +12,7 @@ public class RController {
 		return "foodDiary.jsp";
 	}
 
-	@GetMapping("/start")
+	@GetMapping("/")
 	public String start() {
 		return "Home.jsp";
 	}
@@ -24,5 +24,5 @@ public class RController {
 	
 	
 	
-	
+
 }

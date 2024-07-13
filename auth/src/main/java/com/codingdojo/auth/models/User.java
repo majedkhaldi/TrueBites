@@ -24,6 +24,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -32,40 +33,45 @@ import jakarta.validation.constraints.Size;
 @Table(name = "users")
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 
-	// NEW
-	@Size(min = 3)
-	private String username;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
 
-	// NEW
-	@Size(min = 5)
-	private String password;
-	
+    @Email
+    private String email;
+
 	@NotNull
-	private String email;
+    @Size(min=3)
+    private String username;
+    
+    @NotNull
+    @Size(min=5)
+    private String password;
+ 
+    @Transient
+    @NotEmpty()
+	@Size(min = 5)
+    private String passwordConfirmation;
+    @Nullable
+    private int height;
+    @Nullable
+    private int weight;
+    @Nullable
+    private String gender;
+    @Nullable
+    private int age;
+    
+    
+    @Nullable
+    private int eer;
+    @Nullable
+    @Column(columnDefinition = "TEXT")
+    private String activityLevels;
+    @Nullable
 
-	@Transient
-	@NotEmpty()
-	@Size(min = 8)
-	private String passwordConfirmation;
-	@Nullable
-	private int height;
-	@Nullable
-	private int weight;
-	@Nullable
-	private String gender;
-	@Nullable
-	private int age;
-
-	@Nullable
-	private int eer;
-	@Nullable
-	@Column(columnDefinition = "TEXT")
-	private String activityLevels;
-	@Nullable
 	private String activityLevel;
 	@Nullable
 	@Column(columnDefinition = "TEXT")
@@ -74,38 +80,98 @@ public class User {
 	private String goal;
 	@Nullable
 	private String bmi;
+    
+    private Date createdAt;
+    private Date updatedAt;
+    
+    @OneToOne(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    private Diary diary;
+    
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "users_roles", 
+        joinColumns = @JoinColumn(name = "user_id"), 
+        inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List <Role> roles;
+    
+    @Transient
+    private Map<Double, String> activityLevelsMap = new HashMap<>();
 
-	private Date createdAt;
-	private Date updatedAt;
+    @Transient
+    private Map<Integer, String> goalsMap = new HashMap<>();
+	 
+	 public User() {
+		 activityLevelsMap.put(1.2, "Sedentary");
+		 activityLevelsMap.put(1.375, "Lightly active");
+		 activityLevelsMap.put(1.46, "Lightly to moderately active");
+		 activityLevelsMap.put(1.55, "Moderately active");
+		 activityLevelsMap.put(1.725, "Very active");
+		 activityLevelsMap.put(1.9, "Super active");
+		 goalsMap.put(0, "Maintain weight");
+		 goalsMap.put(1, "Lose weight");
+		 goalsMap.put(2, "Gain weight");
+	        try {
+	            this.activityLevels = convertMapToJson(activityLevelsMap);
+	            this.goals = convertMapToJson(goalsMap);
+	        } catch (JsonProcessingException e) {
+	            e.printStackTrace();
+	        }
+	 }
+	 
+	 public Long getId() {
+	     return id;
+	 }
+	 public void setId(Long id) {
+	     this.id = id;
+	 }
+	 public String getUsername() {
+	     return username;
+	 }
+	 public void setUsername(String username) {
+	     this.username = username;
+	 }
+	
+	 public String getPassword() {
+	     return password;
+	 }
+	 public String getEmail() {
+		return email;
+	}
 
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Diary diary;
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private List<Role> roles;
+	public void setPassword(String password) {
+	     this.password = password;
+	 }
+	 public String getPasswordConfirmation() {
+	     return passwordConfirmation;
+	 }
+	 public void setPasswordConfirmation(String passwordConfirmation) {
+	     this.passwordConfirmation = passwordConfirmation;
+	 }
+	 public Date getCreatedAt() {
+	     return createdAt;
+	 }
+	 public void setCreatedAt(Date createdAt) {
+	     this.createdAt = createdAt;
+	 }
+	 public Date getUpdatedAt() {
+	     return updatedAt;
+	 }
+	 public void setUpdatedAt(Date updatedAt) {
+	     this.updatedAt = updatedAt;
+	 }
+	 public List<Role> getRoles() {
+	     return roles;
+	 }
+	 public void setRoles(Role role) {
+	     this.roles = (List<Role>) role;
+	 }
+	 public String getGoal() {
+			return goal;
 
-	@Transient
-	private Map<Double, String> activityLevelsMap = new HashMap<>();
-
-	@Transient
-	private Map<Integer, String> goalsMap = new HashMap<>();
-
-	public User() {
-		activityLevelsMap.put(1.2, "Sedentary");
-		activityLevelsMap.put(1.375, "Lightly active");
-		activityLevelsMap.put(1.46, "Lightly to moderately active");
-		activityLevelsMap.put(1.55, "Moderately active");
-		activityLevelsMap.put(1.725, "Very active");
-		activityLevelsMap.put(1.9, "Super active");
-		goalsMap.put(0, "Maintain weight");
-		goalsMap.put(1, "Lose weight");
-		goalsMap.put(2, "Gain weight");
-		try {
-			this.activityLevels = convertMapToJson(activityLevelsMap);
-			this.goals = convertMapToJson(goalsMap);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -259,5 +325,12 @@ public class User {
 	public void setDiary(Diary diary) {
 		this.diary = diary;
 	}
+
+    
+    
+
+    
+
+
 
 }

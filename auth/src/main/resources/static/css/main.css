@@ -194,6 +194,10 @@ header .social-icons i {
 .nav-link{
     color: #de4b07;
 }
+#a{
+	padding-left: 52px
+	
+}
 
 
 header .social-icons i:hover {color: rgba(246, 232, 225)}
@@ -1467,4 +1471,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffffff', e
     #blog-single .post .col1 {margin-bottom: 5px;padding: 25px 20px;}
     #blog-single .post {padding-bottom: 0;}
     .Subscribe .heading h3 {font-size: 21px;letter-spacing: 0;}
+}
+
+.meal-gen-box {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.mealGenBox {
+  width: 30%;
+  height: 550px;
+  background-color: rgb(243, 247, 248);
+  border: 1px solid rgb(225, 225, 231);
+  border-radius: 8%;
 }

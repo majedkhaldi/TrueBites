@@ -56,14 +56,15 @@
 				<!--Row Start-->
 				<div class="row">
 					<div class="col-lg-4 col-xs-9">
-						<a href="index.html"><img id="logo" src="/images/image.png"
-							alt="logo"></a>
+						<a href="/"><img id="logo" src="/images/image.png" alt="logo"></a>
 					</div>
 					<div class="col-lg-8 col-xs-12 text-left">
 						<ul class="nav-links">
-							<li><a class="nav-link" href="/start">Home</a></li>
-							<li><a class="nav-link" href="#">About Us</a></li>
-							<li><a class="nav-link" href="#">Features</a></li>
+							<li><a class="nav-link" href="/">Home</a></li>
+							<li><a class="nav-link" href="/#abouts"><button
+										onmouseover="change(this)">About Us</button></a></li>
+							<li><a class="nav-link" href="/#features"><button
+										onmouseover="change(this)">Features</button></a></li>
 						</ul>
 					</div>
 				</div>
@@ -94,7 +95,9 @@
 				</div>
 				<form class="contact1-form validate-form"
 					action="${pageContext.request.contextPath}/contact" method="post">
-					<span class="contact1-form-title"> Get in touch </span>
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" /> <span class="contact1-form-title">
+						Get in touch </span>
 
 					<div class="wrap-input1 validate-input"
 						data-validate="Name is required">
@@ -121,22 +124,23 @@
 					</div>
 
 					<div class="container-contact1-form-btn">
+						<div>
+							<c:if test="${not empty successMessage}">
+								<div class="alert alert-success mt-3">${successMessage}</div>
+							</c:if>
+							<c:if test="${not empty errorMessage}">
+								<div class="alert alert-danger mt-3">${errorMessage}</div>
+							</c:if>
+						</div>
 						<button class="contact1-form-btn">
 							<span> Send Email <i class="fa fa-long-arrow-right"
 								aria-hidden="true"></i>
 							</span>
 						</button>
 					</div>
+
 				</form>
 
-				<div>
-					<c:if test="${not empty successMessage}">
-						<div class="alert alert-success mt-3">${successMessage}</div>
-					</c:if>
-					<c:if test="${not empty errorMessage}">
-						<div class="alert alert-danger mt-3">${errorMessage}</div>
-					</c:if>
-				</div>
 			</div>
 		</div>
 		<section class="Subscribe">
@@ -146,22 +150,90 @@
 					<!-- Grid column -->
 					<div class="col-lg-6 col-sm-6 col1">
 						<div class="heading" data-aos="fade-right" data-aos-delay="300">
-							<h5>Do You Have Any Questions?</h5>
-							<h3>Feel Free To Contact Us</h3>
+							<h5>Want to improve your diet?</h5>
+							<h3>Join us today!</h3>
 						</div>
 					</div>
 					<div class="col-lg-6 col-sm-6 col1">
-						<form>
+						<form action="/registrationPage">
 							<div class="input-group" data-aos="fade-left"
 								data-aos-duration="800">
 								<!-- <input name="email" id="email" type="email" placeholder="Enter your email id" required> -->
-								<button class="btn btn-info" type="submit">Contact Us</button>
+								<button class="btn btn-info" type="submit">Register</button>
+
 							</div>
+
 						</form>
+
 					</div>
+
 				</div>
+
 			</div>
 		</section>
+		<!-- Footer -->
+		<footer class="page-footer font-small indigo">
+			<div class="gradient"></div>
+			<!-- Footer Links -->
+			<div class="container">
+
+				<!-- Grid row-->
+				<div class="row text-center d-flex justify-content-center">
+
+					<!-- Grid column -->
+					<div class="col-md-12">
+						<a href="index.html"><img id="logo1" src="images/image.png"
+							alt="footer-logo"></a>
+					</div>
+					<!-- Grid column -->
+
+				</div>
+				<!-- Grid row-->
+
+				<!-- Grid row-->
+
+				<!-- Grid row-->
+
+				<!-- Grid row-->
+				<div class="row pb-3"></div>
+				<!-- Grid row-->
+
+			</div>
+			<div class="col-md-12 text-center">
+				<div id="a" class="mb-5 flex-center">
+					<!-- Facebook -->
+					<a class="fb-ic"> <i class="fa fa-facebook-official mr-4"
+						aria-hidden="true"></i>
+					</a>
+					<!-- Twitter -->
+					<a class="tw-ic"> <i class="fa fa-twitter fa-lg mr-4"
+						aria-hidden="true"></i>
+					</a>
+					<!-- Pinterest -->
+					<a class="pin-ic"> <i class="fa fa-pinterest fa-lg mr-4"
+						aria-hidden="true"></i>
+					</a>
+					<!-- YouTube -->
+					<a class="yt-ic"> <i class="fa fa-youtube mr-4"
+						aria-hidden="true"></i>
+					</a>
+					<!-- Vimeo -->
+					<a class="vim-ic"> <i class="fa fa-vimeo mr-4"
+						aria-hidden="true"></i>
+					</a>
+					<!-- Google Plus -->
+					<a class="gplus-ic"> <i class="fa fa-google-plus fa-lg mr-4"
+						aria-hidden="true"></i>
+					</a>
+					<!-- Gmail -->
+					<a class="gmail-ic" href="mailto:your-email@gmail.com"> <i
+						class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+
+
+		</footer>
 
 	</div>
 	<!--===============================================================================================-->

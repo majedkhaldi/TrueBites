@@ -106,7 +106,9 @@ public class UserController {
 		thisuser.setAge(a);
 		thisuser.setActivitylevel(act);
 		thisuser.setGoal(goal);
-
+		if (thisuser.getAge()<18) {
+			return "under-18.jsp";
+		}
 		double idealWeight = 0;
 		int bmr = 0;
 		int eer = 0;

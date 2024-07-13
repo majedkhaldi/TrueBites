@@ -16,4 +16,13 @@ public class RController {
 	public String start() {
 		return "Home.jsp";
 	}
+	
+	@GetMapping("/profilee")
+	public String profile() {
+		return "profile.jsp";
+	}
+	
+	
+	
+	
 }

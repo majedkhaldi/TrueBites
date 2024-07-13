@@ -2,6 +2,7 @@
 
 
 body{
+	padding: 0px !important;
 }
 .card {
     width: 100%;
@@ -17,6 +18,11 @@ body{
 }
 
 
+
+
+header{
+	padding: 0px ;
+}
 .meal-option {
     display: flex;
     justify-content: space-between;
@@ -46,10 +52,9 @@ body{
 }
 
 #navbarr{
-        background: rgba(246, 232, 225);
-        padding: 10px 0;
+        background: rgba(228, 160, 62);
+        padding: 0px;
         border-bottom: 1px solid transparent;
-        position: fixed;
         width: 100%;
         top: 0;
         /* z-index: 1000; */
@@ -77,14 +82,14 @@ body{
     /* transition: background 0.3s ease; */
 }
 .nav-linkss a:hover {
-    background: #f2f2f2;
+    background: rgb(242, 202, 151);
     border-radius: 4px;
 }
 
 .nav-linkss{
     margin-top: 20px;
-    margin-right: 100px;
-    display: flex;
+/*    margin-right: 100px;
+*/    display: flex;
     justify-content: space-around;
     
 	

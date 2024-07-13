@@ -28,10 +28,12 @@ public class UserService {
     public void saveWithUserRole(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles(roleRepository.findByName("ROLE_USER"));
-        Diary diary = new Diary(user);
-        diaryRepository.save(diary);
+        Diary diary = new Diary();
+        diary.setUser(user);
         user.setDiary(diary);
+        diaryRepository.save(diary);
         userRepository.save(user);
+
   
     }
      

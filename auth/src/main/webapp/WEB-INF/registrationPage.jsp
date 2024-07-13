@@ -41,7 +41,11 @@
 							placeholder="Confirm Password" />
 					</p>
 					<input id="button" type="submit" value="Sign Up!" />
+
 				</form:form>
+				<form action="/">
+					<button id="buttons">Go Back</button>
+				</form>
 			</div>
 			<div class="login">
 				<c:if test="${logoutMessage != null}">
@@ -53,7 +57,8 @@
 				<form method="POST" action="/login">
 					<label for="chk" aria-hidden="true">Login</label>
 					<p>
-						<input type="text" id="username" name="username" placeholder="User Name" />
+						<input type="text" id="username" name="username"
+							placeholder="User Name" />
 					</p>
 					<p>
 						<input type="password" id="password" name="password"

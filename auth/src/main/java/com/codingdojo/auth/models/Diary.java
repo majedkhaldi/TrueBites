@@ -6,8 +6,7 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import
-  jakarta.persistence.FetchType;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,12 +15,15 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+
   
   //...
   
   @Entity
   
-  @Table(name="diaries") public class Diary {
+  @Table(name="diaries")
+  
+  public class Diary {
   
   @Id
   
@@ -61,9 +63,13 @@ import jakarta.persistence.Table;
   )
   private List <Brinner> brinneritems;
   
+  private int calories; 
   
   
   
+  public Diary() {
+	  
+  }
   
   public Diary(User user) {
 	  this.user = user;
@@ -163,6 +169,22 @@ public List<Brinner> getBrinneritems() {
 
 
 
+
+public int getCalories() {
+	return calories;
+}
+
+public void setCalories(int calories) {
+	this.calories = calories;
+}
+
+public User getUser() {
+	return user;
+}
+
+public void setUser(User user) {
+	this.user = user;
+}
 
 public void setBrinneritems(List<Brinner> brinneritems) {
 	this.brinneritems = brinneritems;

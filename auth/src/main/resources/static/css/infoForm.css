@@ -65,18 +65,48 @@ header a:hover {
 	height: 100%;
 }
 
+#note{
+	color: black;
+	font-size: 12px;
+	justify-content: center;
+	display: flex;
+	margin: 50px;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+	font-weight:bolder; 
+	margin-bottom: 0px;
+	margin-top: 0px;
+	
+}
 label {
 	color: #de4b07;
-	font-size: 2.3em;
+	font-size: 2.0em;
 	justify-content: center;
 	display: flex;
 	margin: 50px;
 	font-weight: bold;
 	cursor: pointer;
 	transition: .5s ease-in-out;
+	margin-right: 30px
+	
+}
+select{
+	width: 60%;
+	height: 40px;
+	width: 293px;
+	background: #e0dede;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 12px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px gray;
+	color:gray;
 }
 
-select, input {
+input {
 	width: 60%;
 	height: 10px;
 	background: #e0dede;
@@ -88,6 +118,42 @@ select, input {
 	outline: none;
 	border-radius: 5px;
 	box-shadow: 2px 2px 2px gray;
+	
+}
+#buttons{
+	width: 60%;
+	height: 40px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: #de4b07;
+	background: #ECECEC;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 30px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+	box-shadow: 2px 2px 2px gray;
+}
+#buttons:hover {
+	background: black;
+	color: #ECECEC;
+}
+.default{
+	
+	display: none;
+}
+select:hover{
+	color:black;
+}
+
+
+
+select option:first-child {
+    color: gray; /* Default option color */
 }
 
 #button {

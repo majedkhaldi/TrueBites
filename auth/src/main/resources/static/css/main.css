@@ -8,7 +8,7 @@ body {
     line-height: 1.8;
     overflow-x: hidden;
     background-color: #fff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
 }
 body,
 html { height: 100%;}
@@ -93,11 +93,11 @@ textarea {resize: none;}
     transition: background 0.3s ease;
 }
 .nav-links a:hover {
-    background: #f2f2f2;
+    background: rgb(242, 189, 126);
     border-radius: 4px;
 }
 .show-nav-links {
-    background: rgba(246, 232, 225, 0.839);
+    background: rgba(228, 160, 62, 0.70);
     border-bottom: 1px solid #ddd;
 }
 .show-nav-links .nav-links {
@@ -193,6 +193,10 @@ header .social-icons i {
 
 .nav-link{
     color: #de4b07;
+}
+#a{
+	padding-left: 52px
+	
 }
 
 

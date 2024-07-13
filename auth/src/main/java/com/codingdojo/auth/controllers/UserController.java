@@ -48,7 +48,9 @@ public class UserController {
     }
     
     @PostMapping("/register")
+
     public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
+
         userValidator.validate(user, result);
         if (result.hasErrors()) {
             return "registrationPage.jsp";
@@ -62,14 +64,13 @@ public class UserController {
             return "registrationPage.jsp";
         }
 
-        // Log the user in after successful registration
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
         Authentication authentication = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // Redirect to "/more" route
         return "redirect:/more";
     }
+
 
 
     
@@ -95,7 +96,7 @@ public class UserController {
     }
     
     
-    @RequestMapping(value = {"/more", "/home","/profile/**"})
+    @RequestMapping(value = {"/", "/home"})
 	 public String home(Principal principal, Model model) {
 	        // 1
 	        String username = principal.getName();

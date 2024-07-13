@@ -52,7 +52,7 @@ public class User {
     private String password;
  
     @Transient
-    @NotEmpty()
+    
 	@Size(min = 5)
     private String passwordConfirmation;
     @Nullable

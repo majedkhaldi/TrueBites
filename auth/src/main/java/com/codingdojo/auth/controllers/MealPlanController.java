@@ -6,8 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.codingdojo.auth.models.MealPlan;
 import com.codingdojo.auth.models.User;
@@ -24,12 +23,12 @@ public class MealPlanController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/generateMealPlans")
+    @GetMapping("/generateMealPlans")
     public String generateMealPlans(Principal pr, Model model) {
     	Long userId = (userService.findByUsername(pr.getName())).getId();
         User user = userService.findById(userId);
         List<MealPlan> mealPlans = mealPlanService.generateMealPlans(user);
-        model.addAttribute("mealPglans", mealPlans);
+        model.addAttribute("mealPlans", mealPlans);
         return "mealPlans.jsp";
     }
 }

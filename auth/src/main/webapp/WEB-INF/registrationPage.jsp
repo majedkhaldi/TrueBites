@@ -67,7 +67,7 @@
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" /> <input id="button" type="submit"
 						value="Login!" />
-					</forqm>
+					</form>
 			</div>
 
 

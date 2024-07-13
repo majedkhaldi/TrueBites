@@ -42,22 +42,15 @@ public class UserController {
     
     @PostMapping("/register")
     public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+        // NEW
         userValidator.validate(user, result);
         if (result.hasErrors()) {
             return "registrationPage.jsp";
         }
-
-        try {
-            userService.saveUserWithAdminRole(user);
-        } catch (RuntimeException e) {
-            // Assuming the exception message is "User already exists with this email"
-            result.rejectValue("email", "error.user", e.getMessage());
-            return "registrationPage.jsp";
-        }
-
+        
+        userService.saveUserWithAdminRole(user);
         return "redirect:/more";
     }
-
     
  // NEW 
     @RequestMapping("/admin")
@@ -81,7 +74,7 @@ public class UserController {
     }
     
     
-    @RequestMapping(value = {"/more", "/home","/profile/**"})
+    @RequestMapping(value = {"/", "/home"})
 	 public String home(Principal principal, Model model) {
 	        // 1
 	        String username = principal.getName();

@@ -40,7 +40,7 @@ public class ContactController {
             mailSender.send(mailMessage);
             model.addAttribute("successMessage", "Your message has been sent successfully!");
         } catch (Exception e) {
-            model.addAttribute("errorMessage", "Error sending message: " + e.getMessage());
+            model.addAttribute("errorMessage", "Failed to send Your message, please try again." );
         }
 
         return "contact.jsp";

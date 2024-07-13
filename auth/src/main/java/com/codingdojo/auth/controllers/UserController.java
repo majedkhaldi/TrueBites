@@ -2,6 +2,11 @@ package com.codingdojo.auth.controllers;
 
 import java.security.Principal;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,6 +38,8 @@ public class UserController {
         this.userService = userService;
         this.userValidator = userValidator;
     }
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     
     @RequestMapping("/registrationPage")
@@ -41,16 +48,31 @@ public class UserController {
     }
     
     @PostMapping("/register")
-    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
-        // NEW
+
+    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
+
         userValidator.validate(user, result);
         if (result.hasErrors()) {
             return "registrationPage.jsp";
         }
-        
-        userService.saveUserWithAdminRole(user);
+
+        try {
+            userService.saveUserWithAdminRole(user);
+        } catch (RuntimeException e) {
+            // Assuming the exception message is "User already exists with this email"
+            result.rejectValue("email", "error.user", e.getMessage());
+            return "registrationPage.jsp";
+        }
+
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
+        Authentication authentication = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
         return "redirect:/more";
     }
+
+
+
     
  // NEW 
     @RequestMapping("/admin")

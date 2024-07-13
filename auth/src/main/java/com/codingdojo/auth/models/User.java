@@ -259,10 +259,6 @@ public class User {
 		this.diary = diary;
 	}
 
-    
-    
-	
-    
 
 
 

@@ -12,6 +12,8 @@
 <html lang="en">
 <head>
 <title>Profile</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,8 +67,8 @@
 						<li><a class="nav-linkss" href="#">Contact Us</a></li>
 						<li>
 							<form id="logoutForm" method="POST" action="/logout">
-								<input type="hidden" name="${_csrf.parameterName}"
-									value="${_csrf.token}" /> <input type="submit" value="Logout!" />
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+									<input type="submit" value="Logout!" />
 							</form></li>
 					</ul>
 				</div>
@@ -93,7 +95,7 @@
 									<h6 class="f-w-600">
 										<c:out value="${thisuser.username}" />
 									</h6>
-									<a href="/user/edit"><button id="edit-profile"
+									<a href="/profile/${thisuser.id}/edit"><button id="edit-profile"
 											type="button" class="add-to-cart"
 											data-product-tile="add-to-cart">Edit Profile</button></a>
 								</div>

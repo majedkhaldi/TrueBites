@@ -27,6 +27,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/animate.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700"
 	rel="stylesheet">
@@ -37,11 +38,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 <link rel="stylesheet" href="/css/animate.css">
 <link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" href="/css/normalize.css">
+
 <link rel="stylesheet" href="/css/vendor.css">
 <link rel="stylesheet" href="/css/style1.css">
 <link rel="stylesheet" href="/css/profile.css">
 <link rel="stylesheet" href="/css/diary.css">
+
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
@@ -61,15 +63,17 @@
 				</div>
 				<div class="col-lg-8 col-xs-12 text-left">
 					<ul class="nav-linkss">
-						<li><a class="nav-linkss" href="/profile/${thisuser.id}/foodDiary"">food Diary</a></li>
+						<li><a class="nav-linkss"
+							href="/profile/${thisuser.id}/foodDiary"">food Diary</a></li>
 						<li><a class="nav-linkss" href="#">Profile</a></li>
 						<li><a class="nav-linkss" href="/generateMealPlans">Meals</a></li>
 						<li><a class="nav-linkss" href="/contact">Contact Us</a></li>
 						<li>
 							<form id="logoutForm" method="POST" action="/logout">
-								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
-									<input type="submit" value="Logout!" />
-							</form></li>
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" /> <input type="submit" value="Logout!" />
+							</form>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -95,8 +99,8 @@
 									<h6 class="f-w-600">
 										<c:out value="${thisuser.username}" />
 									</h6>
-									<a href="/profile/${thisuser.id}/edit"><button id="edit-profile"
-											type="button" class="add-to-cart"
+									<a href="/profile/${thisuser.id}/edit"><button
+											id="edit-profile" type="button" class="add-to-cart"
 											data-product-tile="add-to-cart">Edit Profile</button></a>
 								</div>
 
@@ -142,8 +146,8 @@
 
 										<div class="col-sm-12">
 											<p class="m-b-10 f-w-600">Activity Level:</p>
- 											<h6 class="text-muted f-w-400">${thisuser.activitylevel}</h6>
- 										</div>
+											<h6 class="text-muted f-w-400">${thisuser.activitylevel}</h6>
+										</div>
 										<hr>
 										<div class="col-sm-12">
 											<p class="m-b-10 f-w-600">Body Mass Index (BMI):</p>
@@ -155,5 +159,129 @@
 											<h6 class="text-muted f-w-400">${thisuser.eer}</h6>
 										</div>
 										<hr>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<section class="Subscribe">
+		<div class="container">
+			<!-- Grid row-->
+			<div class="row">
+				<!-- Grid column -->
+				<div class="col-lg-6 col-sm-6 col1">
+					<div class="heading" data-aos="fade-right" data-aos-delay="300">
+						<h5>Do You Have Any Questions?</h5>
+						<h3>Feel Free To Contact Us</h3>
+					</div>
+				</div>
+				<div class="col-lg-6 col-sm-6 col1">
+					<form action="/contact">
+						<div class="input-group" data-aos="fade-left"
+							data-aos-duration="800">
+							<!-- <input name="email" id="email" type="email" placeholder="Enter your email id" required> -->
+							<button class="btn btn-info" type="submit">Contact Us</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Footer -->
+	<footer class="page-footer font-small indigo">
+		<div class="gradient"></div>
+		<!-- Footer Links -->
+		<div class="container">
+
+			<!-- Grid row-->
+			<div class="row text-center d-flex justify-content-center">
+
+				<!-- Grid column -->
+				<div class="col-md-12">
+					<a href="index.html"><img id="logo1" src="/images/image.png"
+						alt="footer-logo"></a>
+				</div>
+				<!-- Grid column -->
+
+			</div>
+			<!-- Grid row-->
+
+			<!-- Grid row-->
+
+			<!-- Grid row-->
+
+			<!-- Grid row-->
+			<div class="row pb-3"></div>
+			<!-- Grid row-->
+
+		</div>
+		<div class="col-md-12 text-center">
+			<div id="a" class="mb-5 flex-center">
+				<!-- Facebook -->
+				<a class="fb-ic"> <i class="fa fa-facebook-official mr-4"
+					aria-hidden="true"></i>
+				</a>
+				<!-- Twitter -->
+				<a class="tw-ic"> <i class="fa fa-twitter fa-lg mr-4"
+					aria-hidden="true"></i>
+				</a>
+				<!-- Pinterest -->
+				<a class="pin-ic"> <i class="fa fa-pinterest fa-lg mr-4"
+					aria-hidden="true"></i>
+				</a>
+				<!-- YouTube -->
+				<a class="yt-ic"> <i class="fa fa-youtube mr-4"
+					aria-hidden="true"></i>
+				</a>
+				<!-- Vimeo -->
+				<a class="vim-ic"> <i class="fa fa-vimeo mr-4"
+					aria-hidden="true"></i>
+				</a>
+				<!-- Google Plus -->
+				<a class="gplus-ic"> <i class="fa fa-google-plus fa-lg mr-4"
+					aria-hidden="true"></i>
+				</a>
+				<!-- Gmail -->
+				<a class="gmail-ic" href="mailto:your-email@gmail.com"> <i
+					class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+				</a>
+			</div>
+		</div>
+
+
+	</footer>
+	<!-- Footer -->
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+	<!-- Custom JavaScript -->
+	<script src="js/animate.js"></script>
+	<script src="js/custom.js"></script>
+	<script>
+		$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+			event.preventDefault();
+			$(this).ekkoLightbox();
+		});
+	</script>
+</body>
+</html>
 </body>
 </html>

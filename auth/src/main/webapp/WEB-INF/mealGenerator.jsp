@@ -23,6 +23,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
 	rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	
 	
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
@@ -83,6 +85,16 @@ strong {
 .circular-counter {
 	fill: #de4b07; /* Use the strong element color */
 }
+
+.social-icons a {
+            color: #4267B2; /* Default color for social media icons */
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #de4b07; /* Hover color for social media icons */
+        }
 </style>
 </head>
 <body>
@@ -232,7 +244,41 @@ strong {
 			</div>
 			<div class="row pb-3"></div>
 		</div>
+<div class="col-md-12 text-center">
+    <div id="a" class="mb-5 flex-center">
+        <!-- Facebook -->
+        <a class="fb-ic"> 
+            <i class="fab fa-facebook-f mr-4" aria-hidden="true"></i>
+        </a>
+        <!-- Twitter -->
+        <a class="tw-ic"> 
+            <i class="fab fa-twitter mr-4" aria-hidden="true"></i>
+        </a>
+        <!-- Pinterest -->
+        <a class="pin-ic"> 
+            <i class="fab fa-pinterest-p mr-4" aria-hidden="true"></i>
+        </a>
+        <!-- YouTube -->
+        <a class="yt-ic"> 
+            <i class="fab fa-youtube mr-4" aria-hidden="true"></i>
+        </a>
+        <!-- Vimeo -->
+        <a class="vim-ic"> 
+            <i class="fab fa-vimeo-v mr-4" aria-hidden="true"></i>
+        </a>
+        <!-- Google Plus -->
+        <a class="gplus-ic"> 
+            <i class="fab fa-google-plus-g mr-4" aria-hidden="true"></i>
+        </a>
+        <!-- Gmail -->
+        <a class="gmail-ic" href="mailto:your-email@gmail.com"> 
+            <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
 	</footer>
+	
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

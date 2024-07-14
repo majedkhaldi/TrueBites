@@ -66,8 +66,7 @@
 							<li><a class="nav-link" href="/#features"><button
 										onmouseover="change(this)">Features</button></a></li>
 							<c:if test="${flag!=false}">
-								<li>
-									<a class="nav-linkss" href="/profile/${user}">Profile</a>
+								<li><a class="nav-linkss" href="/profile/${user}">Profile</a>
 								</li>
 							</c:if>
 						</ul>
@@ -155,22 +154,38 @@
 					<!-- Grid column -->
 					<div class="col-lg-6 col-sm-6 col1">
 						<div class="heading" data-aos="fade-right" data-aos-delay="300">
-							<h5>Want to improve your diet?</h5>
-							<h3>Join us today!</h3>
+							<h5>Thanks for your feedback!!</h5>
+							<h3>we'll get back to you soon.</h3>
 						</div>
 					</div>
-					<div class="col-lg-6 col-sm-6 col1">
-						<form action="/registrationPage">
-							<div class="input-group" data-aos="fade-left"
-								data-aos-duration="800">
-								<!-- <input name="email" id="email" type="email" placeholder="Enter your email id" required> -->
-								<button class="btn btn-info" type="submit">Register</button>
+					<c:if test="${flag==false}">
+						<div class="col-lg-6 col-sm-6 col1">
+							<form action="/registrationPage">
+								<div class="input-group" data-aos="fade-left"
+									data-aos-duration="800">
+									<!-- <input name="email" id="email" type="email" placeholder="Enter your email id" required> -->
+									<button class="btn btn-info" type="submit">Register</button>
 
-							</div>
+								</div>
 
-						</form>
+							</form>
 
-					</div>
+						</div>
+					</c:if>
+					<c:if test="${flag!=false}">
+						<div class="col-lg-6 col-sm-6 col1">
+							<form action="/profile/${user}">
+								<div class="input-group" data-aos="fade-left"
+									data-aos-duration="800">
+									<!-- <input name="email" id="email" type="email" placeholder="Enter your email id" required> -->
+									<button class="btn btn-info" type="submit">Profile</button>
+
+								</div>
+
+							</form>
+
+						</div>
+					</c:if>
 
 				</div>
 

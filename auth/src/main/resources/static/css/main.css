@@ -68,10 +68,12 @@ textarea {resize: none;}
     padding: 10px 0;
     border-bottom: 1px solid transparent;
     width: 100%;
+    position:fixed;
     top: 0;
     z-index: 1000;
     transition: background 0.3s ease, border-bottom 0.3s ease;
 }
+
 .nav-links {
     list-style: none;
     padding: 0;

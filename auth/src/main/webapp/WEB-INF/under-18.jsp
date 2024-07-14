@@ -64,7 +64,10 @@
         <p>Remember, every little step you take is a step towards a healthier you. Celebrate your progress and enjoy the journey!</p>
         <p>Feel free to check out our tips and resources on healthy eating. If you ever have questions or need a bit of support, we're here for you.</p>
         
-        <a href="/" class="btn-home">Go to Home Page</a>
+            <form id="logoutForm" method="POST" action="/logout">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input type="submit" value="Logout!" />
+    </form>
     </div>
 </body>
 </html>

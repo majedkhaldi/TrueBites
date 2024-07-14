@@ -40,14 +40,14 @@
 
 			<p>
 
-				<input name="weight" placeholder="Weight" />
+				<input type="number" name="weight" placeholder="Weight"  value="${thisuser.weight}" />
 			</p>
 			<p>
 
-				<input type="number" name="height" placeholder="height" />
+				<input type="number" name="height" placeholder="height"  value="${thisuser.height}" />
 			</p>
 			<p>
-				<input type="number" name="age" placeholder="Age" required>
+				<input type="number" name="age" placeholder="Age"  value="${thisuser.age}" required>
 			</p>
 			<p>
 			<p>
@@ -72,7 +72,7 @@
 						exercise or intense exercise 3-4 times/week</option>
 					<option id="o" value="1.725">Very active: Intense exercise
 						6-7 times/week</option>
-					<select>
+					</select>
 			</p>
 
 

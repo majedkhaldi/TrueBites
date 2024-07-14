@@ -198,6 +198,12 @@ public class UserController {
 		
 		return "redirect:/profile/" + user.getId();
 	}
+	
+	
+	
+	
+	
+	
 	@GetMapping("/logoutt")
 	public String logoutt(Principal principal) {
 		principal= null;

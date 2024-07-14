@@ -29,6 +29,7 @@ public class MealPlanController {
         User user = userService.findById(userId);
         List<MealPlan> mealPlans = mealPlanService.generateMealPlans(user);
         model.addAttribute("mealPlans", mealPlans);
-        return "mealPlans.jsp";
+        model.addAttribute("user", user);
+        return "mealGenerator.jsp";
     }
 }

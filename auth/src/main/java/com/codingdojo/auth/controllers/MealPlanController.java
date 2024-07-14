@@ -19,7 +19,6 @@ public class MealPlanController {
 
     @Autowired
     private MealPlanService mealPlanService;
-    
     @Autowired
     private UserService userService;
 

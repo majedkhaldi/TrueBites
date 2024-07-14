@@ -37,7 +37,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-
     @Email
     private String email;
 
@@ -101,7 +100,7 @@ public class User {
     @Transient
     private Map<Integer, String> goalsMap = new HashMap<>();
 	 
-	 public User() {
+	public User() {
 		 activityLevelsMap.put(1.2, "Sedentary");
 		 activityLevelsMap.put(1.375, "Lightly active");
 		 activityLevelsMap.put(1.46, "Lightly to moderately active");
@@ -245,6 +244,55 @@ public class User {
 	@PreUpdate
 	protected void onUpdate() {
 		this.updatedAt = new Date();
+	}
+
+	
+	public String getActivityLevels() {
+		return activityLevels;
+	}
+
+	public void setActivityLevels(String activityLevels) {
+		this.activityLevels = activityLevels;
+	}
+
+	public String getActivityLevel() {
+		return activityLevel;
+	}
+
+	public void setActivityLevel(String activityLevel) {
+		this.activityLevel = activityLevel;
+	}
+
+	public String getGoals() {
+		return goals;
+	}
+
+	public void setGoals(String goals) {
+		this.goals = goals;
+	}
+
+	public Map<Double, String> getActivityLevelsMap() {
+		return activityLevelsMap;
+	}
+
+	public void setActivityLevelsMap(Map<Double, String> activityLevelsMap) {
+		this.activityLevelsMap = activityLevelsMap;
+	}
+
+	public Map<Integer, String> getGoalsMap() {
+		return goalsMap;
+	}
+
+	public void setGoalsMap(Map<Integer, String> goalsMap) {
+		this.goalsMap = goalsMap;
+	}
+
+	public void setGoal(String goal) {
+		this.goal = goal;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 	private String convertMapToJson(Map<?, ?> map) throws JsonProcessingException {

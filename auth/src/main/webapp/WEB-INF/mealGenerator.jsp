@@ -97,8 +97,8 @@ strong {
                 </div>
                 <div class="col-lg-8 col-xs-12 text-left">
                     <ul class="nav-linkss">
-						<li><a class="nav-linkss" href="#">food Diary</a></li>
-                        <li><a class="nav-linkss" href="">Profile</a></li>
+						<li><a class="nav-linkss" href="/profile/${user.id}/foodDiary">food Diary</a></li>
+                        <li><a class="nav-linkss" href="/profile/${user.id}">Profile</a></li>
 						<li><a class="nav-linkss" href="#">Meals</a></li>
                         <li><a class="nav-linkss" href="/contact">Contact Us</a></li>
                     </ul>

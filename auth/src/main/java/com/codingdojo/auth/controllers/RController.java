@@ -5,6 +5,7 @@ import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.codingdojo.auth.models.User;
 import com.codingdojo.auth.services.UserService;
@@ -14,10 +15,9 @@ public class RController {
 	@Autowired
 	UserService userService;
 	
-	@GetMapping("/foodDiary")
-	public String foodDiary() {
-		return "foodDiary.jsp";
-	}
+	
+	
+
 
 	@GetMapping("/")
 	public String start(Principal principal) {

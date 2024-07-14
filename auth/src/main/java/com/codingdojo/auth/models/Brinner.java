@@ -1,9 +1,15 @@
 package com.codingdojo.auth.models;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Brinner {
@@ -19,6 +25,12 @@ public class Brinner {
     private int fat;
     private String type;
     private int recommended;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable( name = "diaries_brinneritems",
+    joinColumns = @JoinColumn(name ="brinneritem_id"),
+    inverseJoinColumns = @JoinColumn(name = "diary_id")
+    )
+    private List <Diary> diaries;
 	
     public Brinner() {
 	}
@@ -86,6 +98,16 @@ public class Brinner {
 	public void setRecommended(int recommended) {
 		this.recommended = recommended;
 	}
+
+	public List<Diary> getDiaries() {
+		return diaries;
+	}
+
+	public void setDiaries(List<Diary> diaries) {
+		this.diaries = diaries;
+	}
+	
+	
     
     
     

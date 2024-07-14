@@ -92,7 +92,9 @@
             <div class="card-container">
                 <div class="card">
                     <h3>Food Diary</h3>
-                    <form action="/searchBrinner" method="get">
+                    <form action="/searchBrinner" method="post">
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
                         <div class="meal-option">
                             <span>Breakfast</span>
                             <span class="plus-sign" data-target="#breakfast-search">+</span>
@@ -105,6 +107,8 @@
                                 <c:if test="${type == 'breakfast'}">
                                     <c:forEach var="result" items="${results}">
                                         <form action="/addToDiary/${userId}/${result.id}" method="post">
+											<input type="hidden" name="type" value="breakfast">
+
 											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
                                             <div>${result.food} (${result.calories} kcal)</div>
@@ -116,11 +120,27 @@
                             </div>
                         </div>
                     </form>
+					<div> 
+						<ul>
+						<c:forEach var="brinner" items="${joinedBrinner}">
+							<form action="/removeFromDiary/${userId}/${brinner.id}" method="post">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+								<input type="hidden" name="_method" value="delete">
+								<input type="hidden" name="type" value="breakfast">
+
+								<li style="display:block;"><c:out value="${brinner.food}"/><button type="submit">Delete</button></li>
+							</form>
+
+						</c:forEach>
+						</ul>
+					</div>
                     
-                    <form action="/searchBrinner" method="get">
+                    <form action="/searchBrinner" method="post">
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
                         <div class="meal-option">
                             <span>Lunch</span>
-                            <span class="plus-sign" data-target="#lunch-search">+</span>
                         </div>
                         <div id="lunch-search" class="search-bar">
                             <input type="text" class="form-control" name="query" placeholder="Search for lunch options...">
@@ -130,6 +150,8 @@
                                 <c:if test="${type == 'lunch'}">
                                     <c:forEach var="result" items="${results}">
                                         <form action="/addToDiary/${userId}/${result.id}" method="post">
+											<input type="hidden" name="type" value="lunch">
+
 											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
                                             <div>${result.food} (${result.calories} kcal)</div>
@@ -141,8 +163,25 @@
                             </div>
                         </div>
                     </form>
+					<div> 
+						<ul>
+						<c:forEach var="lunch" items="${joinedLunch}">
+							<form action="/removeFromDiary/${userId}/${lunch.id}" method="post">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+								<input type="hidden" name="_method" value="delete">
+								<input type="hidden" name="type" value="lunch">
+
+								<li style="display:block;"><c:out value="${lunch.food}"/><button type="submit">Delete</button></li>
+							</form>
+
+						</c:forEach>
+						</ul>
+					</div>
                     
-                    <form action="/searchBrinner" method="get">
+                    <form action="/searchBrinner" method="post">
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
                         <div class="meal-option">
                             <span>Dinner</span>
                             <span class="plus-sign" data-target="#dinner-search">+</span>
@@ -155,6 +194,8 @@
                                 <c:if test="${type == 'dinner'}">
                                     <c:forEach var="result" items="${results}">
                                         <form action="/addToDiary/${userId}/${result.id}" method="post">
+											<input type="hidden" name="type" value="dinner">
+
 											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                             <div>${result.food} (${result.calories} kcal)</div>
                                             <button type="submit" class="btn btn-secondary">Add</button>
@@ -164,8 +205,25 @@
                             </div>
                         </div>
                     </form>
+					<div> 
+						<ul>
+						<c:forEach var="brinner" items="${joinedBrinner}">
+							<form action="/removeFromDiary/${userId}/${brinner.id}" method="post">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+								<input type="hidden" name="_method" value="delete">
+								<input type="hidden" name="type" value="dinner">
+
+								<li style="display:block;"><c:out value="${brinner.food}"/><button type="submit">Delete</button></li>
+							</form>
+
+						</c:forEach>
+						</ul>
+					</div>
                     
-                    <form action="/searchBrinner" method="get">
+                    <form action="/searchBrinner" method="post">
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
                         <div class="meal-option">
                             <span>Snack</span>
                             <span class="plus-sign" data-target="#snack-search">+</span>
@@ -178,6 +236,8 @@
                                 <c:if test="${type == 'snack'}">
                                     <c:forEach var="result" items="${results}">
                                         <form action="/addToDiary/${userId}/${result.id}" method="post">
+											<input type="hidden" name="type" value="snack">
+
 											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                             <div>${result.food} (${result.calories} kcal)</div>
                                             <button type="submit" class="btn btn-secondary">Add</button>
@@ -187,24 +247,31 @@
                             </div>
                         </div>
                     </form>
+					<div> 
+					<ul>
+					<c:forEach var="snack" items="${joinedSnack}">
+						<form action="/removeFromDiary/${userId}/${snack.id}" method="post">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+							<input type="hidden" name="_method" value="delete">
+							<input type="hidden" name="type" value="snack">
+
+							<li style="display:block;"><c:out value="${snack.food}"/><button type="submit">Delete</button></li>
+						</form>
+
+					</c:forEach>
+					</ul>
+				</div>
                 </div>
             </div>
         </div>
         <div class="col-lg-3">
             <div class="calorie-counter">
                 <canvas id="calorieChart" width="200" height="200"></canvas>
-                <h2>896</h2>
+                <h2><c:out value="${caloriesIn}"/></h2>
                 <p>Consumed (kcal) of <c:out value="${calories}"/></p>
             </div>
-            <div class="macro-counter">
-                <p>Macronutrient Breakdown</p>
-                <div class="macro-line macro-protein" style="width: 31%;"></div>
-                <p>Protein: 31%</p>
-                <div class="macro-line macro-fats" style="width: 26%;"></div>
-                <p>Fats: 26%</p>
-                <div class="macro-line macro-carbs" style="width: 43%;"></div>
-                <p>Carbs: 43%</p>
-            </div>
+           
         </div>
     </div>
 </div>
@@ -227,8 +294,8 @@
         });
     });
 
-    const totalCalories = 1600;
-    const consumedCalories = 896;
+    const totalCalories =  <c:out value="${calories}"/>;
+    const consumedCalories = <c:out value="${caloriesIn}"/>;
     const remainingCalories = totalCalories - consumedCalories;
 
     const data = {

@@ -146,12 +146,12 @@
 
 										<div class="col-sm-12">
 											<p class="m-b-10 f-w-600">Activity Level:</p>
-											<h6 class="text-muted f-w-400">${thisuser.activityLevel}</h6>
-										</div>
+ 											<h6 class="text-muted f-w-400">${thisuser.activitylevel}</h6>
+ 										</div>
 										<hr>
 										<div class="col-sm-12">
 											<p class="m-b-10 f-w-600">Body Mass Index (BMI):</p>
-											<h6 class="text-muted f-w-400">${bmi}</h6>
+											<h6 class="text-muted f-w-400">${thisuser.bmi}</h6>
 										</div>
 										<hr>
 										<div class="col-sm-12">

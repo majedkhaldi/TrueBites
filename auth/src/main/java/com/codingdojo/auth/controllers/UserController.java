@@ -180,6 +180,7 @@ public class UserController {
 		model.addAttribute("choreq", (int)((int)session.getAttribute("eer")*0.45));
 		model.addAttribute("proreq", (int)((int)session.getAttribute("eer")*0.35));
 		model.addAttribute("fatreq", (int)((int)session.getAttribute("eer")*0.20));
+		
 		return "profile.jsp";
 
 	}

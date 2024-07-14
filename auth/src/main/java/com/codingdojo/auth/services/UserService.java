@@ -17,7 +17,6 @@ public class UserService {
     private RoleRepository roleRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
    
-    
     public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder)     {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
@@ -33,11 +32,9 @@ public class UserService {
         user.setDiary(diary);
         diaryRepository.save(diary);
         userRepository.save(user);
-
-  
     }
      
-     // 2 
+    // 2 
     public void saveUserWithAdminRole(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles(roleRepository.findByName("ROLE_ADMIN"));
@@ -56,9 +53,14 @@ public class UserService {
     	}
     	return null;
     }
+    
     public User updateUser(User user) {
     	return userRepository.save(user);
     }
+    
+//    public User updateUser(User user, BindingResult result) {
+//    	return userRepository.save(user);
+//    } 
 }
 
 

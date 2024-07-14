@@ -104,8 +104,11 @@
                             <div class="search-results" id="breakfast-results">
                                 <c:if test="${type == 'breakfast'}">
                                     <c:forEach var="result" items="${results}">
-                                        <form action="/addToDiary/${result.id}" method="post">
+                                        <form action="/addToDiary/${userId}/${result.id}" method="post">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
                                             <div>${result.food} (${result.calories} kcal)</div>
+											
                                             <button type="submit" class="btn btn-secondary">Add</button>
                                         </form>
                                     </c:forEach>
@@ -126,8 +129,11 @@
                             <div class="search-results" id="lunch-results">
                                 <c:if test="${type == 'lunch'}">
                                     <c:forEach var="result" items="${results}">
-                                        <form action="/addToDiary/${result.id}" method="post">
+                                        <form action="/addToDiary/${userId}/${result.id}" method="post">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
                                             <div>${result.food} (${result.calories} kcal)</div>
+
                                             <button type="submit" class="btn btn-secondary">Add</button>
                                         </form>
                                     </c:forEach>
@@ -148,7 +154,8 @@
                             <div class="search-results" id="dinner-results">
                                 <c:if test="${type == 'dinner'}">
                                     <c:forEach var="result" items="${results}">
-                                        <form action="/addToDiary/${result.id}" method="post">
+                                        <form action="/addToDiary/${userId}/${result.id}" method="post">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                             <div>${result.food} (${result.calories} kcal)</div>
                                             <button type="submit" class="btn btn-secondary">Add</button>
                                         </form>
@@ -170,7 +177,8 @@
                             <div class="search-results" id="snack-results">
                                 <c:if test="${type == 'snack'}">
                                     <c:forEach var="result" items="${results}">
-                                        <form action="/addToDiary/${result.id}" method="post">
+                                        <form action="/addToDiary/${userId}/${result.id}" method="post">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                             <div>${result.food} (${result.calories} kcal)</div>
                                             <button type="submit" class="btn btn-secondary">Add</button>
                                         </form>

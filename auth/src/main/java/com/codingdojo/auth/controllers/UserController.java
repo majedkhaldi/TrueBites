@@ -54,7 +54,7 @@ public class UserController {
         }
         
         userService.saveUserWithAdminRole(user);
-        return "redirect:/";
+        return "redirect:/registrationPage";
     }
     
  // NEW 

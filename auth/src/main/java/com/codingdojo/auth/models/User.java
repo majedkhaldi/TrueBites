@@ -43,11 +43,11 @@ public class User {
     @Email
     private String email;
 
-	@NotNull
+	
     @Size(min=3)
     private String username;
     
-    @NotNull
+    
     @Size(min=5)
     private String password;
  

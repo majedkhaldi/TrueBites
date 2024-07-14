@@ -60,15 +60,15 @@
 			<!--Row Start-->
 			<div class="row">
 				<div class="col-lg-4 col-xs-9">
-					<a href="index.html"><img id="logo" src="images/image.png"
+					<a href="index.html"><img id="logo" src="/images/image.png"
 						alt="logo"></a>
 				</div>
 				<div class="col-lg-8 col-xs-12 text-left">
 					<ul class="nav-linkss">
 						<li><a class="nav-linkss" href="#">food Diary</a></li>
-						<li><a class="nav-linkss" href="#">Profile</a></li>
+						<li><a class="nav-linkss" href="/profile/${thisuser.id}">Profile</a></li>
 						<li><a class="nav-linkss" href="#">Meals</a></li>
-						<li><a class="nav-linkss" href="#">Contact Us</a></li>
+						<li><a class="nav-linkss" href="/contact">Contact Us</a></li>
 						<li>
 							<form id="logoutForm" method="POST" action="/logout">
 								<input type="hidden" name="${_csrf.parameterName}"
@@ -155,7 +155,7 @@
 										</div>
 										<hr>
 										<div class="col-sm-12">
-											<p class="m-b-10 f-w-600">Daily Calories Needs:</p>
+											<p class="m-b-10 f-w-600">Daily Calorie Needs:</p>
 											<h6 class="text-muted f-w-400">${thisuser.eer}</h6>
 										</div>
 										<hr>

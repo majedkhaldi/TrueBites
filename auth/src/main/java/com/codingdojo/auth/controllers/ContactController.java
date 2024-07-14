@@ -1,5 +1,7 @@
 package com.codingdojo.auth.controllers;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -8,19 +10,32 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.codingdojo.auth.models.Contact;
+import com.codingdojo.auth.models.User;
+import com.codingdojo.auth.services.UserService;
 
 @Controller
 public class ContactController {
 
     @Autowired
     private JavaMailSender mailSender;
+    @Autowired
+    UserService userService;
 
     @GetMapping("/contact")
-    public String showContactForm(Model model) {
-        model.addAttribute("contactForm", new Contact());
+    public String showContactForm(Principal pr, Model model) {
+    	 
+        boolean flag = false;
+    	model.addAttribute("contactForm", new Contact());
+        if(pr != null) {
+        	flag = true;
+        }
+        model.addAttribute("flag", flag);
+        model.addAttribute("user", userService.findByUsername(pr.getName()).getId());
+        
         return "contact.jsp";
     }
 

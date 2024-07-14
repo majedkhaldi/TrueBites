@@ -1476,19 +1476,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffffff', e
     .Subscribe .heading h3 {font-size: 21px;letter-spacing: 0;}
 }
 
-.meal-gen-box {
-  display: flex;
-  width: 80%;
-  justify-content: space-around;
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 0 auto;
-}
-
-.mealGenBox {
-  width: 30%;
-  height: 550px;
-  background-color: rgb(243, 247, 248);
-  border: 1px solid rgb(225, 225, 231);
-  border-radius: 8%;
-}
+    .meal-gen-box {
+        display: flex;
+        width: 80%;
+        justify-content: space-around;
+        border: 1px solid #e7e5e5;
+        padding: 10px;
+        margin: 0 auto;
+    }
+    .mealGenBox {
+        width: 30%;
+        height: 600px;
+        background-color: rgb(252, 249, 245);
+        border: 2px solid orangered;
+        border-radius: 8%;
+    }

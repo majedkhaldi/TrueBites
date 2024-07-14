@@ -84,12 +84,12 @@
 </section>
 
 <section class="meal-gen-box">
+        <!--  CSS included at the bottom of main.css & in  mealGenerator.css -->
 
-	<!--  CSS included at the bottom of main.css & in  mealGenerator.css -->
-      <div class="mealGenBox"></div>
-      <div class="mealGenBox"></div>
-      <div class="mealGenBox"></div>
-
+        <div class="mealGenBox"></div>
+        <div class="mealGenBox"></div>
+        <div class="mealGenBox"></div>
+    
 </section>
 
 <!-- Add AOS (Animate On Scroll) Library -->

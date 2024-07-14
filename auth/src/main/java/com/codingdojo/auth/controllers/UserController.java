@@ -127,7 +127,22 @@ public class UserController {
 		
 		int tdee = (int) (bmr * act);
 		double bmi = w / ((h/100)^2);
-		
+		if (bmi <18.5) {
+			thisuser.setBmi("Underweight");
+			userService.updateUser(thisuser);
+		}
+		else if (18.5 < bmi && bmi <24.9) {
+			thisuser.setBmi("Healthy Weight");
+			userService.updateUser(thisuser);
+		}
+		else if (25.0 < bmi && bmi <29.9) {
+			thisuser.setBmi("Overweight");
+			userService.updateUser(thisuser);
+		}
+		else if (30.0 < bmi) {
+			thisuser.setBmi("Obese");
+			userService.updateUser(thisuser);
+		}
 		switch(goal) {
 			case 1:
 				eer = tdee - 700;
@@ -158,29 +173,30 @@ public class UserController {
 		if(thisuser.getAge()<18) {
 			return "redirect:/logoutt";
 		}
-		double bmiValue = (double) session.getAttribute("bmi");
-		if (bmiValue <18.5) {
-			thisuser.setBmi("Underweight");
-			userService.updateUser(thisuser);
-		}
-		else if (18.5 < bmiValue && bmiValue <24.9) {
-			thisuser.setBmi("Healthy Weight");
-			userService.updateUser(thisuser);
-		}
-		else if (25.0 < bmiValue && bmiValue <29.9) {
-			thisuser.setBmi("Overweight");
-			userService.updateUser(thisuser);
-		}
-		else if (30.0 < bmiValue) {
-			thisuser.setBmi("Obese");
-			userService.updateUser(thisuser);
-		}
+//		double bmiValue = (double) session.getAttribute("bmi");
+//		if (bmiValue <18.5) {
+//			thisuser.setBmi("Underweight");
+//			userService.updateUser(thisuser);
+//		}
+//		else if (18.5 < bmiValue && bmiValue <24.9) {
+//			thisuser.setBmi("Healthy Weight");
+//			userService.updateUser(thisuser);
+//		}
+//		else if (25.0 < bmiValue && bmiValue <29.9) {
+//			thisuser.setBmi("Overweight");
+//			userService.updateUser(thisuser);
+//		}
+//		else if (30.0 < bmiValue) {
+//			thisuser.setBmi("Obese");
+//			userService.updateUser(thisuser);
+//		}
 		System.out.println("**=============****" + thisuser.getWeight());
 		model.addAttribute("thisuser", thisuser);
-		model.addAttribute("choreq", (int)((int)session.getAttribute("eer")*0.45));
-		model.addAttribute("proreq", (int)((int)session.getAttribute("eer")*0.35));
-		model.addAttribute("fatreq", (int)((int)session.getAttribute("eer")*0.20));
-		
+
+		model.addAttribute("choreq", thisuser.getEer() *0.45);
+		model.addAttribute("proreq", thisuser.getEer()  *0.35);
+		model.addAttribute("fatreq", thisuser.getEer() *0.20);
+
 		return "profile.jsp";
 
 	}
@@ -199,6 +215,12 @@ public class UserController {
 		
 		return "redirect:/profile/" + user.getId();
 	}
+	
+	
+	
+	
+	
+	
 	@GetMapping("/logoutt")
 	public String logoutt(Principal principal) {
 		principal= null;

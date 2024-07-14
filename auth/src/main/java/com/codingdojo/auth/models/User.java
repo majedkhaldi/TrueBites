@@ -33,8 +33,6 @@ import jakarta.validation.constraints.Size;
 @Table(name = "users")
 public class User {
 
-
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,11 +41,14 @@ public class User {
     @Email
     private String email;
 
+
 	
     @Size(min=3)
     private String username;
     
     
+
+
     @Size(min=5)
     private String password;
  

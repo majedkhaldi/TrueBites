@@ -65,6 +65,11 @@
 										onmouseover="change(this)">About Us</button></a></li>
 							<li><a class="nav-link" href="/#features"><button
 										onmouseover="change(this)">Features</button></a></li>
+							<c:if test="${flag!=false}">
+								<li>
+									<a class="nav-linkss" href="/profile/${user}">Profile</a>
+								</li>
+							</c:if>
 						</ul>
 					</div>
 				</div>

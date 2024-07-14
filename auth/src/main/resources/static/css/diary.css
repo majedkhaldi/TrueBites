@@ -56,7 +56,8 @@ header{
         padding: 0px;
         border-bottom: 1px solid transparent;
         width: 100%;
-        top: 0;
+        top: -54px;
+        position: relative;
         /* z-index: 1000; */
         /* transition: background 0.3s ease, border-bottom 0.3s ease; */
     

@@ -37,10 +37,10 @@ public class MealPlanService {
 
     public List<MealPlan> generateMealPlans(User user) {
         int dailyCalories = user.getEer();
-        int breakfastCalories = dailyCalories * 20 / 100;
+        int breakfastCalories = dailyCalories * 25 / 100;
         int lunchCalories = dailyCalories * 30 / 100;
-        int snackCalories = dailyCalories * 15 / 100;
-        int dinnerCalories = dailyCalories * 20 / 100;
+        int snackCalories = dailyCalories * 10 / 100;
+        int dinnerCalories = dailyCalories * 25 / 100;
 
         List<Brinner> recommendedBrinner = brinnerRepo.findByRecommended(1);
         List<Lunch> recommendedLunch = lunchRepo.findByRecommended(1);
@@ -199,12 +199,10 @@ public class MealPlanService {
     private List<Snack> selectMealItemsS(List<Snack> items, int targetCalories, String mealType) {
         List<Snack> selectedItems = new ArrayList<>();
         List<Snack> fruits = items.stream().filter(item -> "fruits".equals(item.getType())).collect(Collectors.toList());
-        List<Snack> vegetables = items.stream().filter(item -> "vegetables".equals(item.getType())).collect(Collectors.toList());
-
+        List<Snack> nuts = items.stream().filter(item -> "nuts".equals(item.getType())).collect(Collectors.toList());
         int totalCalories = 0;
         boolean hasFruit = false;
-        int vegetableCount = 0;
-
+        boolean hasNuts = false;
         // Add at least one fruit
         if (!fruits.isEmpty()) {
         	Snack fruit = fruits.get(new Random().nextInt(fruits.size()));
@@ -212,16 +210,13 @@ public class MealPlanService {
             totalCalories += fruit.getCalories();
             hasFruit = true;
         }
-
-        // Add at least two vegetables
-        if (!vegetables.isEmpty()) {
-            for (int i = 0; i < 2; i++) {
-            	Snack vegetable = vegetables.get(new Random().nextInt(vegetables.size()));
-                selectedItems.add(vegetable);
-                totalCalories += vegetable.getCalories();
-                vegetableCount++;
-            }
+        if (!nuts.isEmpty()) {
+        	Snack nut = nuts.get(new Random().nextInt(nuts.size()));
+            selectedItems.add(nut);
+            totalCalories += nut.getCalories();
+            hasNuts = true;
         }
+
         
 
         // Add other items to meet the target calories
@@ -235,7 +230,7 @@ public class MealPlanService {
                 selectedItems.add(item);
                 totalCalories += item.getCalories();
             }
-            if (totalCalories >= targetCalories - 50 && hasFruit && vegetableCount >= 2) {
+            if (totalCalories >= targetCalories - 50 && hasFruit && hasNuts) {
                 break;
             }
         }

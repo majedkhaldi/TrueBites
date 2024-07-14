@@ -25,23 +25,23 @@
     <input type="number" name="height" placeholder="Height(cm)" required>
     <input type="number" name="weight" placeholder="Weight(kg)" required>
     <select name="gender" required>
-        <option class="default" disabled selected >Gender</option>
-        <option value="m">Male</option>
-        <option value="f">Female</option>
+        <option  class="default" disabled selected >Gender</option>
+        <option id= "o" value="m">Male</option>
+        <option id= "o" value="f">Female</option>
     </select>
     <select name="goal" required>
         <option class="default"  disabled selected >Goal</option>
-        <option value="0">Maintain</option>
-        <option value="1">Lose</option>
-        <option value="2">Gain</option>
+        <option id= "o" value="0">Maintain</option>
+        <option  id= "o" value="1">Lose</option>
+        <option  id= "o" value="2">Gain</option>
     </select>
     <select name="activity" required>
         <option class="default" disabled selected >Activity Level</option>
-        <option value="1.2">Sedentary: little or no exercise</option>
-        <option value="1.375">Lightly active: Exercise 1-3 times/week</option>
-        <option value="1.46">Lightly to moderately active: Exercise 4-5 times/week</option>
-        <option value="1.55">Moderately active: Daily exercise or intense exercise 3-4 times/week</option>
-        <option value="1.725">Very active: Intense exercise 6-7 times/week</option>
+        <option id= "o" value="1.2">Sedentary: little or no exercise</option>
+        <option id= "o" value="1.375">Lightly active: Exercise 1-3 times/week</option>
+        <option id= "o" value="1.46">Lightly to moderately active: Exercise 4-5 times/week</option>
+        <option id= "o" value="1.55">Moderately active: Daily exercise or intense exercise 3-4 times/week</option>
+        <option id= "o" value="1.725">Very active: Intense exercise 6-7 times/week</option>
     </select>
     <input type="number" name="age" placeholder="Age" required>
     <label id="note" for="chk" aria-hidden="true">Note: we need this information to create your account.</label>

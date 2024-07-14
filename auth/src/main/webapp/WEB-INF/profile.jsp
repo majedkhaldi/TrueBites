@@ -46,14 +46,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
 <!-- <link rel="stylesheet" href="./css/style.css"> -->
 
-
-
 </head>
 <body>
-
-
-
-
 	<nav id="navbarrr">
 		<!-- container Start-->
 		<div class="container">

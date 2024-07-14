@@ -79,7 +79,7 @@
 							<li><a class="nav-linkss" href="/generateMealPlans">Meals</a></li>
 							<li><a class="nav-linkss" href="/contact">Contact Us</a></li>
 							<li>
-								<form id="logoutForm" method="POST" action="/logout">
+								<form id="logoutForm"  method="POST" action="/logout">
 									<input type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" /> <input type="submit"
 										value="Logout!" />
@@ -403,30 +403,121 @@
         </div>
     </div>
 </div>
+<!--  -->
+	<section class="Subscribe">
+		<div class="container">
+			<!-- Grid row-->
+			<div class="row">
+				<!-- Grid column -->
+				<div class="col-lg-6 col-sm-6 col1">
+					<div class="heading" data-aos="fade-right" data-aos-delay="300">
+						<h5>Do You Have Any Questions?</h5>
+						<h3>Feel Free To Contact Us</h3>
+					</div>
+				</div>
+				<div class="col-lg-6 col-sm-6 col1">
+					<form action="/contact">
+						<div class="input-group" data-aos="fade-left"
+							data-aos-duration="800">
+							<!-- <input name="email" id="email" type="email" placeholder="Enter your email id" required> -->
+							<button class="btn btn-info" type="submit">Contact Us</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
 
-			<!-- Facebook -->
-			<a class="fb-ic"> <i class="fa fa-facebook-official mr-4"
-				aria-hidden="true"></i>
-			</a>
-			<!-- Twitter -->
-			<a class="tw-ic"> <i class="fa fa-twitter fa-lg mr-4"
-				aria-hidden="true"> </i>
-			</a>
-			<!-- Google +-->
-			<a class="gplus-ic"> <i class="fa fa-pinterest fa-lg mr-4"
-				aria-hidden="true"> </i>
-			</a>
-			<!--Linkedin -->
-			<a class="li-ic"> <i class="fa fa-youtube mr-4"
-				aria-hidden="true"></i>
-			</a>
-			<!--Instagram-->
-			<a class="ins-ic"> <i class="fa fa-vimeo mr-4" aria-hidden="true"></i>
-			</a>
-			<!--Pinterest-->
-			<a class="pin-ic"> <i class="fa fa-google-plus fa-lg"
-				aria-hidden="true"> </i>
-			</a>
+
+	<!-- Footer -->
+	<footer class="page-footer font-small indigo">
+		<div class="gradient"></div>
+		<!-- Footer Links -->
+		<div class="container">
+
+			<!-- Grid row-->
+			<div class="row text-center d-flex justify-content-center">
+
+				<!-- Grid column -->
+				<div class="col-md-12">
+					<a href="index.html"><img id="logo1" src="/images/image.png"
+						alt="footer-logo"></a>
+				</div>
+				<!-- Grid column -->
+
+			</div>
+			<!-- Grid row-->
+
+			<!-- Grid row-->
+
+			<!-- Grid row-->
+
+			<!-- Grid row-->
+			<div class="row pb-3"></div>
+			<!-- Grid row-->
+
+		</div>
+		<div class="col-md-12 text-center">
+			<div id="a" class="mb-5 flex-center">
+				<!-- Facebook -->
+				<a class="fb-ic"> <i class="fa fa-facebook-official mr-4"
+					aria-hidden="true"></i>
+				</a>
+				<!-- Twitter -->
+				<a class="tw-ic"> <i class="fa fa-twitter fa-lg mr-4"
+					aria-hidden="true"></i>
+				</a>
+				<!-- Pinterest -->
+				<a class="pin-ic"> <i class="fa fa-pinterest fa-lg mr-4"
+					aria-hidden="true"></i>
+				</a>
+				<!-- YouTube -->
+				<a class="yt-ic"> <i class="fa fa-youtube mr-4"
+					aria-hidden="true"></i>
+				</a>
+				<!-- Vimeo -->
+				<a class="vim-ic"> <i class="fa fa-vimeo mr-4"
+					aria-hidden="true"></i>
+				</a>
+				<!-- Google Plus -->
+				<a class="gplus-ic"> <i class="fa fa-google-plus fa-lg mr-4"
+					aria-hidden="true"></i>
+				</a>
+				<!-- Gmail -->
+				<a class="gmail-ic" href="mailto:your-email@gmail.com"> <i
+					class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+				</a>
+			</div>
+		</div>
+
+
+	</footer>
+	<!-- Footer -->
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+	<!-- Custom JavaScript -->
+	<script src="js/animate.js"></script>
+	<script src="js/custom.js"></script>
+	<script>
+		$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+			event.preventDefault();
+			$(this).ekkoLightbox();
+		});
+	</script>
+<!--  delete the above if it desnt work -->
 
 
 			<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

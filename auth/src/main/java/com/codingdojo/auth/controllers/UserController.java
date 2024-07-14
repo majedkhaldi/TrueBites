@@ -52,18 +52,19 @@ public class UserController {
 
  
  	// put or update profile
-    @PutMapping("/profile/{id}")
-    public String update( @Valid @ModelAttribute("id") User user, BindingResult result, Model model, HttpSession session ){
-        if (result.hasErrors()) {
-        	model.addAttribute("user", user);
-        	System.out.println("*********** ERROR in profile/id");
-            return "edit.jsp";
-        } else {
-        	System.out.println("*********** NO ERROR in profile/id");
-        	userService.updateUser(user);
-            return "redirect:/profile/{id}";
-        }
-    }
+//    @PutMapping("/profile/{id}")
+//    public String update( @Valid @ModelAttribute("id") User user, BindingResult result, Model model, HttpSession session
+// ){
+//        if (result.hasErrors()) {
+//        	model.addAttribute("user", user);
+//        	System.out.println("*********** ERROR in profile/id");
+//            return "edit.jsp";
+//        } else {
+//        	System.out.println("*********** NO ERROR in profile/id");
+//        	userService.updateUser(user);
+//            return "redirect:/profile/{id}";
+//        }
+//    }
     
     @RequestMapping("/registrationPage")
     public String registerForm(@ModelAttribute("user") User user) {
@@ -186,7 +187,77 @@ public class UserController {
 		session.setAttribute("idealWeight", idealWeight);
 		return"redirect:/profile/{id}";	
 	}
-	
+    @PutMapping("/calculate/{id}")
+	public String calculationsupdate(Model model, 
+			HttpSession session, 
+			@PathVariable("id") Long id, 
+			@RequestParam("height") int h,
+			@RequestParam("weight") int w,
+			@RequestParam("age") int a,
+			@RequestParam("activity") double act,
+			@RequestParam("goal") int goal) {
+		User thisuser = userService.findById(id);
+//	System.out.println("*******" + thisuser.getId());
+		thisuser.setHeight(h);
+		thisuser.setWeight(w);
+		thisuser.setAge(a);
+		thisuser.setActivitylevel(act);
+		thisuser.setGoal(goal);
+		String g = thisuser.getGender();
+		if (thisuser.getAge()<18) {
+			return "under-18.jsp";
+		}
+		double idealWeight = 0;
+		int bmr = 0;
+		int eer = 0;
+		if(g.equals("f")) {
+			 idealWeight = 45.5 + (0.91 * (h - 152.4));
+			 bmr = (int) ((10*w) + (6.25*h) - (5*a) - 161);
+			
+		}
+		else if(g.equals("m")) {
+			 idealWeight = 50 + (0.91 * (h - 152.4));
+			 bmr = (int) ((10 * w) + (6.25 * h) - (5 * a) + 5);
+		}
+		
+		int tdee = (int) (bmr * act);
+		double bmi = w / ((h/100)^2);
+		if (bmi <18.5) {
+			thisuser.setBmi("Underweight");
+			userService.updateUser(thisuser);
+		}
+		else if (18.5 < bmi && bmi <24.9) {
+			thisuser.setBmi("Healthy Weight");
+			userService.updateUser(thisuser);
+		}
+		else if (25.0 < bmi && bmi <29.9) {
+			thisuser.setBmi("Overweight");
+			userService.updateUser(thisuser);
+		}
+		else if (30.0 < bmi) {
+			thisuser.setBmi("Obese");
+			userService.updateUser(thisuser);
+		}
+		switch(goal) {
+			case 1:
+				eer = tdee - 700;
+				break;
+			case 2:
+				eer = tdee + 700;
+				break;
+			default:
+				eer = tdee;
+		}
+		Diary diary = thisuser.getDiary();
+        diary.setCalories(eer);
+        diaryService.saveDiary(diary);
+		session.setAttribute("bmi", bmi);
+		thisuser.setEer(eer);
+		userService.updateUser(thisuser);
+		session.setAttribute("eer", eer);
+		session.setAttribute("idealWeight", idealWeight);
+		return"redirect:/profile/{id}";	
+	}
     
 	@GetMapping("/profile/{id}")
 	public String showProfile(@PathVariable("id") Long id, HttpSession session, Model model) {

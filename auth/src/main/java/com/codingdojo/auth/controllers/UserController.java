@@ -43,10 +43,10 @@ public class UserController {
  	@RequestMapping("/profile/{id}/edit")
      public String edit(@PathVariable("id") Long id, Model model, HttpSession session) {
         // User thisuser = userService.findById( (Long) session.getAttribute("userid") );
- 		System.out.println("************************************ rendering profile I ");
+ 		System.out.println("*************** rendering profile I ");
         User thisuser = userService.findById(id);
  		model.addAttribute("thisuser", thisuser);
- 		System.out.println("************************************ rendering profile II ");
+ 		System.out.println("************** rendering profile II ");
          return "edit.jsp";
      }
 
@@ -56,10 +56,10 @@ public class UserController {
     public String update( @Valid @ModelAttribute("id") User user, BindingResult result, Model model, HttpSession session ){
         if (result.hasErrors()) {
         	model.addAttribute("user", user);
-        	System.out.println("******************************* ERROR in profile/id");
+        	System.out.println("*********** ERROR in profile/id");
             return "edit.jsp";
         } else {
-        	System.out.println("******************************* NO ERROR in profile/id");
+        	System.out.println("*********** NO ERROR in profile/id");
         	userService.updateUser(user);
             return "redirect:/profile/{id}";
         }
@@ -98,8 +98,6 @@ public class UserController {
         if(logout != null) {
             model.addAttribute("logoutMessage", "Logout Successful!");
         }
-        
-        
         System.out.println("--------->");
         return "registrationPage.jsp";
     }

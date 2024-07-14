@@ -97,7 +97,7 @@
 									</div>
 
 									<h6 class="f-w-600">
-										<c:out value="${user.username}" />
+										<c:out value="${thisuser.username}" />
 									</h6>
 									<a href="/user/edit"><button id="edit-profile"
 											type="button" class="add-to-cart"
@@ -115,7 +115,7 @@
 											<p class="m-b-10 f-w-600">User Name:</p>
 
 											<h6 class="text-muted f-w-400">
-												<c:out value="${user.username}" />
+												<c:out value="${thisuser.username}" />
 											</h6>
 
 										</div>
@@ -123,30 +123,40 @@
 
 										<div class="col-sm-12">
 											<p class="m-b-10 f-w-600">Email:</p>
-											<h6 class="text-muted f-w-400">raghad.sa@gmail.com</h6>
+											<h6 class="text-muted f-w-400">${thisuser.email}</h6>
 										</div>
 										<hr>
 										<div class="col-sm-12">
 											<p class="m-b-10 f-w-600">Weight:</p>
-											<h6 class="text-muted f-w-400"></h6>
+											<h6 class="text-muted f-w-400">${thisuser.weight}</h6>
 										</div>
 										<hr>
 
 										<div class="col-sm-12">
 											<p class="m-b-10 f-w-600">Height:</p>
-											<h6 class="text-muted f-w-400"></h6>
+											<h6 class="text-muted f-w-400">${thisuser.height}</h6>
 										</div>
 										<hr>
 
 										<div class="col-sm-12">
-											<p class="m-b-10 f-w-600">Health Goel:</p>
-											<h6 class="text-muted f-w-400"></h6>
+											<p class="m-b-10 f-w-600">Health Goal:</p>
+											<h6 class="text-muted f-w-400">${thisuser.goal}</h6>
 										</div>
 										<hr>
 
 										<div class="col-sm-12">
 											<p class="m-b-10 f-w-600">Activity Level:</p>
-											<h6 class="text-muted f-w-400"></h6>
+											<h6 class="text-muted f-w-400">${thisuser.activityLevel}</h6>
+										</div>
+										<hr>
+										<div class="col-sm-12">
+											<p class="m-b-10 f-w-600">Body Mass Index (BMI):</p>
+											<h6 class="text-muted f-w-400">${bmi}</h6>
+										</div>
+										<hr>
+										<div class="col-sm-12">
+											<p class="m-b-10 f-w-600">Daily Calories Needs:</p>
+											<h6 class="text-muted f-w-400">${thisuser.eer}</h6>
 										</div>
 										<hr>
 </body>

@@ -40,9 +40,14 @@ public class User {
     @Email
     private String email;
 
+
+	
     @Size(min=3)
     private String username;
     
+    
+
+
     @Size(min=5)
     private String password;
  

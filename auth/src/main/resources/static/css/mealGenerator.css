@@ -9,14 +9,12 @@
         display: flex;
         width: 80%;
         justify-content: space-around;
-        border: 1px solid #e7e5e5;
-        padding: 10px;
-        margin: 0 auto;
+
+        margin-top: 152px; 
     }
     .mealGenBox {
         width: 30%;
         height: 600px;
         background-color: rgb(252, 249, 245);
-        border: 2px solid orangered;
-        border-radius: 8%;
+        border: 2px solid grey;
     }

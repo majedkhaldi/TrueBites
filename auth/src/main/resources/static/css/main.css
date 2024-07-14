@@ -67,7 +67,6 @@ textarea {resize: none;}
     /* background: transparent; */
     padding: 10px 0;
     border-bottom: 1px solid transparent;
-    position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
@@ -156,7 +155,8 @@ header .social-icons i {
     margin-right: 100px;
     display: flex;
     justify-content: space-around;
-    color:rgba(0, 0, 0, 0.2)
+    color:rgba(0, 0, 0, 0.2);
+    align-items: center;
 }
 
 
@@ -593,7 +593,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffffff', e
     border: none;
     border-radius: 0;
 }
-.Subscribe {width: 100%;height: auto;color: #fff; padding: 60px; background: rgb(248, 136, 9);}
+.Subscribe {width: 100%;height: auto;color: #fff; padding: 60px; background: rgb(248, 136, 9); margin-top: 167px;}
 
 .Subscribe form {
     float: right;
@@ -1479,8 +1479,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffffff', e
         display: flex;
         width: 80%;
         justify-content: space-around;
-        border: 1px solid #e7e5e5;
-        padding: 10px;
+        
         margin: 0 auto;
     }
     .mealGenBox {
@@ -1488,5 +1487,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffffff', e
         height: 600px;
         background-color: rgb(252, 249, 245);
         border: 2px solid orangered;
-        border-radius: 8%;
     }

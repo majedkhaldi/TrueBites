@@ -79,7 +79,7 @@ public class UserController {
         }
         
         userService.saveUserWithAdminRole(user);
-        return "redirect:/";
+        return "redirect:/registrationPage";
     }
     
  // NEW 
@@ -196,12 +196,14 @@ public class UserController {
 		if(thisuser.getAge()<18) {
 			return "redirect:/logoutt";
 		}
+
 //		System.out.println("**=============****" + thisuser.getWeight());
 		model.addAttribute("thisuser", thisuser);
 		model.addAttribute("choreq", thisuser.getEer()*0.45);
 		model.addAttribute("proreq", thisuser.getEer()*0.35);
 		model.addAttribute("fatreq", thisuser.getEer()*0.20);
 		
+
 		return "profile.jsp";
 	}
 	
@@ -220,6 +222,7 @@ public class UserController {
 		return "redirect:/profile/" + user.getId();
 	}
 	
+
 	@GetMapping("/logoutt")
 	public String logoutt(Principal principal) {
 		principal= null;

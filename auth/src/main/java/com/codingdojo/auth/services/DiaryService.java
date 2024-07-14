@@ -8,8 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.codingdojo.auth.models.Brinner;
 import com.codingdojo.auth.models.Diary;
+import com.codingdojo.auth.models.Lunch;
+import com.codingdojo.auth.models.Snack;
 import com.codingdojo.auth.repositories.BrinnerRepository;
 import com.codingdojo.auth.repositories.DiaryRepository;
+import com.codingdojo.auth.repositories.LunchRepository;
+import com.codingdojo.auth.repositories.SnackRepository;
 
 @Service
 public class DiaryService {
@@ -18,6 +22,11 @@ public class DiaryService {
 	    private BrinnerRepository binnerrepository;
 	   @Autowired
 	    private DiaryRepository diaryrepository;
+	   @Autowired
+	    private LunchRepository lunchrepository;
+	   @Autowired
+	    private SnackRepository snackrepository;
+	   
 	   
 	   
 	   
@@ -30,6 +39,12 @@ public class DiaryService {
 	   
 	   public List<Brinner> searchBrinner(String query) {
 	        return binnerrepository.findByFoodContainingIgnoreCase(query);
+	    }
+	   public List<Lunch> searchLunch(String query) {
+	        return lunchrepository.findByFoodContainingIgnoreCase(query);
+	    }
+	   public List<Snack> searchSnack(String query) {
+	        return snackrepository.findByFoodContainingIgnoreCase(query);
 	    }
 	   
 	   

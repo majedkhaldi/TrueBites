@@ -57,14 +57,14 @@
             <!--Row Start-->
             <div class="row">
                 <div class="col-lg-4 col-xs-9">
-                    <a href="index.html"><img id="logo" src="images/image.png" alt="logo"></a>
+                    <a href="index.html"><img id="logo" src="/images/image.png" alt="logo"></a>
                 </div>
                 <div class="col-lg-8 col-xs-12 text-left">
                     <ul class="nav-linkss">
 						<li><a class="nav-linkss" href="#">food Diary</a></li>
-                        <li><a class="nav-linkss" href="#">Profile</a></li>
+                        <li><a class="nav-linkss" href="">Profile</a></li>
 						<li><a class="nav-linkss" href="#">Meals</a></li>
-                        <li><a class="nav-linkss" href="#">Contact Us</a></li>
+                        <li><a class="nav-linkss" href="/contact">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -104,8 +104,11 @@
                             <div class="search-results" id="breakfast-results">
                                 <c:if test="${type == 'breakfast'}">
                                     <c:forEach var="result" items="${results}">
-                                        <form action="/addToDiary/${result.id}" method="post">
+                                        <form action="/addToDiary/${userId}/${result.id}" method="post">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
                                             <div>${result.food} (${result.calories} kcal)</div>
+											
                                             <button type="submit" class="btn btn-secondary">Add</button>
                                         </form>
                                     </c:forEach>
@@ -126,8 +129,11 @@
                             <div class="search-results" id="lunch-results">
                                 <c:if test="${type == 'lunch'}">
                                     <c:forEach var="result" items="${results}">
-                                        <form action="/addToDiary/${result.id}" method="post">
+                                        <form action="/addToDiary/${userId}/${result.id}" method="post">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
                                             <div>${result.food} (${result.calories} kcal)</div>
+
                                             <button type="submit" class="btn btn-secondary">Add</button>
                                         </form>
                                     </c:forEach>
@@ -148,7 +154,8 @@
                             <div class="search-results" id="dinner-results">
                                 <c:if test="${type == 'dinner'}">
                                     <c:forEach var="result" items="${results}">
-                                        <form action="/addToDiary/${result.id}" method="post">
+                                        <form action="/addToDiary/${userId}/${result.id}" method="post">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                             <div>${result.food} (${result.calories} kcal)</div>
                                             <button type="submit" class="btn btn-secondary">Add</button>
                                         </form>
@@ -170,7 +177,8 @@
                             <div class="search-results" id="snack-results">
                                 <c:if test="${type == 'snack'}">
                                     <c:forEach var="result" items="${results}">
-                                        <form action="/addToDiary/${result.id}" method="post">
+                                        <form action="/addToDiary/${userId}/${result.id}" method="post">
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                             <div>${result.food} (${result.calories} kcal)</div>
                                             <button type="submit" class="btn btn-secondary">Add</button>
                                         </form>

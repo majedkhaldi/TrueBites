@@ -150,7 +150,9 @@ select:hover{
 	color:black;
 }
 
-
+#o{
+	color: black;
+}
 
 select option:first-child {
     color: gray; /* Default option color */

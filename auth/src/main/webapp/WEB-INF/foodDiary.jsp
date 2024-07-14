@@ -186,7 +186,7 @@
             <div class="calorie-counter">
                 <canvas id="calorieChart" width="200" height="200"></canvas>
                 <h2>896</h2>
-                <p>Consumed (kcal) of 1600</p>
+                <p>Consumed (kcal) of <c:out value="${calories}"/></p>
             </div>
             <div class="macro-counter">
                 <p>Macronutrient Breakdown</p>

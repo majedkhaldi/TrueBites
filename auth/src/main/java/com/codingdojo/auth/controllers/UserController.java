@@ -192,9 +192,11 @@ public class UserController {
 //		}
 		System.out.println("**=============****" + thisuser.getWeight());
 		model.addAttribute("thisuser", thisuser);
+
 		model.addAttribute("choreq", thisuser.getEer() *0.45);
 		model.addAttribute("proreq", thisuser.getEer()  *0.35);
 		model.addAttribute("fatreq", thisuser.getEer() *0.20);
+
 		return "profile.jsp";
 
 	}

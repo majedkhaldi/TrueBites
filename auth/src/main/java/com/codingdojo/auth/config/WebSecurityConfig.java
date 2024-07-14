@@ -48,7 +48,6 @@ public class WebSecurityConfig {
    logout -> logout.permitAll()
  );
 
-
     return http.build();
   }
     

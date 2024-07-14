@@ -46,14 +46,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
 <!-- <link rel="stylesheet" href="./css/style.css"> -->
 
-
-
 </head>
 <body>
-
-
-
-
 	<nav id="navbarrr">
 		<!-- container Start-->
 		<div class="container">
@@ -146,12 +140,12 @@
 
 										<div class="col-sm-12">
 											<p class="m-b-10 f-w-600">Activity Level:</p>
-											<h6 class="text-muted f-w-400">${thisuser.activityLevel}</h6>
-										</div>
+ 											<h6 class="text-muted f-w-400">${thisuser.activitylevel}</h6>
+ 										</div>
 										<hr>
 										<div class="col-sm-12">
 											<p class="m-b-10 f-w-600">Body Mass Index (BMI):</p>
-											<h6 class="text-muted f-w-400">${bmi}</h6>
+											<h6 class="text-muted f-w-400">${thisuser.bmi}</h6>
 										</div>
 										<hr>
 										<div class="col-sm-12">

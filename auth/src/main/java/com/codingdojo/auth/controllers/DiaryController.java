@@ -16,6 +16,8 @@ import com.codingdojo.auth.models.User;
 import com.codingdojo.auth.services.DiaryService;
 import com.codingdojo.auth.services.UserService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class DiaryController {
 
@@ -38,9 +40,18 @@ public class DiaryController {
 	 */
 	
 	@GetMapping("/profile/{id}/foodDiary")
-	public String foodDiary(Principal principal, @PathVariable("id") Long id, Model model) {
+	public String foodDiary(Principal principal, @PathVariable("id") Long id, Model model, HttpSession session) {
 		User user = userservice.findById(id);
-		model.addAttribute("calories", user.getEer());
+		/*
+		 * model.addAttribute("calories", user.getEer());
+		 *///		model.addAttribute("diaryId", user.getDiary().getId());
+		model.addAttribute("userId", user.getId());
+		session.setAttribute("calories", user.getEer());
+		session.setAttribute("user", user.getId());
+
+		
+		
+		
 		
 			
 			return "foodDiary.jsp";
@@ -61,12 +72,16 @@ public class DiaryController {
         return "foodDiary.jsp";
     }
     
-    @PostMapping("/addToDiary/{id}")
-    public String addToDiary(@RequestParam("foodId") Long brinnerId, @PathVariable("id") Long id) {
-        Diary diary = diaryService.findDiary(id);
-        Brinner brinner = diaryService.findBrinner(brinnerId);
-        diaryService.addBrinnerItem(diary, brinner);
-        return "redirect:/foodDiary";
+    @PostMapping("/addToDiary/{id}/{foodId}")
+    public String addToDiary(@PathVariable("foodId") Long brinnerId, @PathVariable("id") Long id, Model model) {
+    	User user = userservice.findById(id);
+    	Diary thisdiary = user.getDiary();
+		/*
+		 * Diary diary = diaryService.findDiary(diaryId);
+		 */       
+    	Brinner brinner = diaryService.findBrinner(brinnerId);
+        diaryService.addBrinnerItem(thisdiary, brinner);
+        return "redirect:/profile/{id}/foodDiary";
     }
     
 }

@@ -4,10 +4,11 @@
   import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import
-  jakarta.persistence.FetchType;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,13 +16,18 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+
   
   //...
   
   @Entity
   
-  @Table(name="diaries") public class Diary {
+  @Table(name="diaries")
+  
+  public class Diary {
   
   @Id
   
@@ -31,7 +37,9 @@ import jakarta.persistence.Table;
   
   
   @Column(updatable=false)
+  @DateTimeFormat(pattern="yyyy-MM-dd")
   private Date createdAt;
+  @DateTimeFormat(pattern="yyyy-MM-dd")
   private Date updatedAt;
   
   @ManyToMany(fetch = FetchType.LAZY)
@@ -61,9 +69,13 @@ import jakarta.persistence.Table;
   )
   private List <Brinner> brinneritems;
   
+  private int calories; 
   
   
   
+  public Diary() {
+	  
+  }
   
   public Diary(User user) {
 	  this.user = user;
@@ -164,8 +176,32 @@ public List<Brinner> getBrinneritems() {
 
 
 
+public int getCalories() {
+	return calories;
+}
+
+public void setCalories(int calories) {
+	this.calories = calories;
+}
+
+public User getUser() {
+	return user;
+}
+
+public void setUser(User user) {
+	this.user = user;
+}
+
 public void setBrinneritems(List<Brinner> brinneritems) {
 	this.brinneritems = brinneritems;
+}
+@PrePersist
+protected void onCreate(){
+    this.createdAt = new Date();
+}
+@PreUpdate
+protected void onUpdate(){
+    this.updatedAt = new Date();
 }
   
   }

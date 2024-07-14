@@ -9,6 +9,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Registration Page</title>
 <link rel="stylesheet" href="/css/infoForm.css">
+<style>
+.error{
+text-align: center;
+color: red;
+}
+
+</style>
 </head>
 <body>
 	<div>
@@ -48,12 +55,7 @@
 				</form>
 			</div>
 			<div class="login">
-				<c:if test="${logoutMessage != null}">
-					<c:out value="${logoutMessage}"></c:out>
-				</c:if>
-				<c:if test="${errorMessage != null}">
-					<c:out value="${errorMessage}"></c:out>
-				</c:if>
+
 				<form method="POST" action="/login">
 					<label for="chk" aria-hidden="true">Login</label>
 					<p>
@@ -67,7 +69,15 @@
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" /> <input id="button" type="submit"
 						value="Login!" />
-					</forqm>
+				</form>
+				<div class="error">
+				<c:if test="${logoutMessage != null}">
+					<c:out value="${logoutMessage}"></c:out>
+				</c:if>
+				<c:if test="${errorMessage != null}">
+					<c:out value="${errorMessage}"></c:out>
+				</c:if>
+				</div>
 			</div>
 
 

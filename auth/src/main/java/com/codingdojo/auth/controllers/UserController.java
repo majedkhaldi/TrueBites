@@ -161,17 +161,21 @@ public class UserController {
 		double bmiValue = (double) session.getAttribute("bmi");
 		if (bmiValue <18.5) {
 			thisuser.setBmi("Underweight");
+			userService.updateUser(thisuser);
 		}
 		else if (18.5 < bmiValue && bmiValue <24.9) {
 			thisuser.setBmi("Healthy Weight");
+			userService.updateUser(thisuser);
 		}
 		else if (25.0 < bmiValue && bmiValue <29.9) {
 			thisuser.setBmi("Overweight");
+			userService.updateUser(thisuser);
 		}
 		else if (30.0 < bmiValue) {
 			thisuser.setBmi("Obese");
+			userService.updateUser(thisuser);
 		}
-		System.out.println("***************" + thisuser.getWeight());
+		System.out.println("**=============****" + thisuser.getWeight());
 		model.addAttribute("thisuser", thisuser);
 		model.addAttribute("choreq", (int)((int)session.getAttribute("eer")*0.45));
 		model.addAttribute("proreq", (int)((int)session.getAttribute("eer")*0.35));

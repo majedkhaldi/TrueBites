@@ -36,7 +36,7 @@
 <link rel="stylesheet" href="/css/diary.css">
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/mealGenerator.css">
-<title>Feast</title>
+<title>Meals</title>
 <style>
 .card {
 	height: 100%;
@@ -105,7 +105,7 @@ strong {
 	
     }
     .btn-custom {
-    background-color: rgba(228, 160, 62);
+		margin-top:10px;
     color: black; /* Adjust text color for contrast */
     border: none;
      /* Optional: remove border */
@@ -121,15 +121,15 @@ strong {
 </style>
 </head>
 <body>
-	<header class="top">
+	<header  style="padding: 0px;" class="top">
 		<nav id="navbarr">
 			<!-- container Start-->
 			<div class="container">
 				<!--Row Start-->
 				<div class="row">
 					<div class="col-lg-4 col-xs-9">
-						<a href="index.html"><img id="logo" src="/images/image.png"
-							alt="logo"></a>
+						<img id="logo" src="/images/image.png"
+							alt="logo">
 					</div>
 					<div class="col-lg-8 col-xs-12 text-left">
 						<ul class="nav-linkss">
@@ -165,42 +165,7 @@ strong {
 		</script>
 	</header>
 
-	<div class="caloric-intake-card text-center mb-1">
-		<h3>Your Daily Caloric Intake</h3>
-		<canvas id="caloricCounter" width="150" height="150"></canvas>
-		<p class="lead">
-			<c:out value="${user.eer}" />
-			calories
-		</p>
-	</div>
-
-	<script>
-	document.addEventListener("DOMContentLoaded", function() {
-	    const canvas = document.getElementById('caloricCounter');
-	    const ctx = canvas.getContext('2d');
-	    const totalCalories = 2000; // Example total calories
-	    const userIntake = ${user.eer}; // Dynamically get the user's caloric intake
-
-	    // Calculate percentage
-	    const percentage = (userIntake / totalCalories) * 100;
-
-	    // Draw circular progress
-	    ctx.clearRect(0, 0, canvas.width, canvas.height);
-	    ctx.beginPath();
-	    ctx.arc(75, 75, 60, 1.5 * Math.PI, (1.5 + (percentage / 100) * 2 * Math.PI), false);
-	    ctx.lineWidth = 15;
-	    ctx.strokeStyle = '#de4b07'; // Color for the intake portion
-	    ctx.stroke();
-
-	    // Optional: Draw a circle to indicate the total intake
-	    ctx.beginPath();
-	    ctx.arc(75, 75, 60, 0, 2 * Math.PI, false);
-	    ctx.lineWidth = 5;
-	    ctx.strokeStyle = '#dee2e6'; // Light gray
-	    ctx.stroke();
-	});
-
-	</script>
+	
 
 	<div class="row">
 		<c:forEach var="plan" items="${mealPlans}" varStatus="status">

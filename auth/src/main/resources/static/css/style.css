@@ -3,7 +3,6 @@
 
 .container {
 	width: 80%;
-	font-family: cursive;
 	margin: 0 auto;
 }
 
@@ -37,8 +36,8 @@ textarea {
 input[type="submit"]{
 	padding: 0.75rem 1rem;
 	font-size: 1rem;
-	background-color: #007bff;
-	color: #fff;
+	background-color: #fff;
+	color :black;
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;

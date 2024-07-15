@@ -34,7 +34,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 <link rel="stylesheet" href="/css/animate.css">
 <link rel="stylesheet" href="/css/main.css">
-<title>Feast</title>
+<title>TrueBite</title>
 </head>
 <body>
 

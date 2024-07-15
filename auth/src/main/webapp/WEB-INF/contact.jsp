@@ -102,7 +102,7 @@
 					<img src="images/new_image_corrected.png" alt="IMG">
 				</div>
 				<form class="contact1-form validate-form"
-					action="${pageContext.request.contextPath}/contact" method="post">
+					action="${pageContext.request.contextPath}/contactUs" method="post">
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" /> <span class="contact1-form-title">
 						Get in touch </span>

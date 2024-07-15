@@ -58,8 +58,8 @@
 			<!--Row Start-->
 			<div class="row">
 				<div class="col-lg-4 col-xs-9">
-					<a href="index.html"><img id="logo" src="/images/image.png"
-						alt="logo"></a>
+					<img id="logo" src="/images/image.png"
+						alt="logo">
 				</div>
 				<div class="col-lg-8 col-xs-12 text-left">
 					<ul class="nav-linkss">

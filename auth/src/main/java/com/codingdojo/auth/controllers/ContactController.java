@@ -26,15 +26,21 @@ public class ContactController {
     UserService userService;
 
     @GetMapping("/contact")
-    public String showContactForm(Principal pr, Model model) {
-    	 
+    public String showContactForm(Principal pr, Model model) { 
         boolean flag = false;
     	model.addAttribute("contactForm", new Contact());
+    	model.addAttribute("flag", flag);
+        
         if(pr != null) {
         	flag = true;
+        	model.addAttribute("user", userService.findByUsername(pr.getName()).getId());
         }
-        model.addAttribute("flag", flag);
-        model.addAttribute("user", userService.findByUsername(pr.getName()).getId());
+        else {
+        	flag = false;
+        	 model.addAttribute("user", null);
+        }
+
+
         
         return "contact.jsp";
     }

@@ -29,16 +29,20 @@ public class ContactController {
     public String showContactForm(Principal pr, Model model) { 
         boolean flag = false;
     	model.addAttribute("contactForm", new Contact());
-    	model.addAttribute("flag", flag);
+    	
         
         if(pr != null) {
+        	
         	flag = true;
         	model.addAttribute("user", userService.findByUsername(pr.getName()).getId());
+        	model.addAttribute("flag", flag);
         }
         else {
         	flag = false;
         	 model.addAttribute("user", null);
+        	 model.addAttribute("flag", flag);
         }
+        
 
 
         

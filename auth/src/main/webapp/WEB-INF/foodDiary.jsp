@@ -46,6 +46,15 @@
         .search-results div {
             padding: 5px 0;
         }
+          li button{
+        background-color: red; 
+        color: white;
+        border: none;
+        border-radius: 5px;
+         margin-left: 10px;
+         box-shadow: 2px 2px 2px grey;
+         width: 65px;
+        }
     </style>
 </head>
 <body>

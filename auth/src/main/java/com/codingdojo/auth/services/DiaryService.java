@@ -143,6 +143,14 @@ public class DiaryService {
 			
 		}
 	   
+	   public void reset(Diary d) {
+		d.setLunchitems(null);
+		d.setSnackitems(null);
+		d.setBrinneritems(null);
+		d.setCaloriesin(0);
+		
+	}
+	   
 		/*
 		 * public List<Brinner> joinedBrinner(Diary diary){ return
 		 * binnerrepository.findAllByDiary(diary); }

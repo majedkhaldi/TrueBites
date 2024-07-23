@@ -69,7 +69,8 @@ import jakarta.persistence.Table;
   )
   private List <Brinner> brinneritems;
   
-  private int calories; 
+  private int calories;
+  private int caloriesin;
   
   
   
@@ -195,6 +196,14 @@ public void setUser(User user) {
 public void setBrinneritems(List<Brinner> brinneritems) {
 	this.brinneritems = brinneritems;
 }
+
+public int getCaloriesin() {
+	return caloriesin;
+}
+
+public void setCaloriesin(int caloriesin) {
+	this.caloriesin = caloriesin;
+}
 @PrePersist
 protected void onCreate(){
     this.createdAt = new Date();
@@ -203,6 +212,15 @@ protected void onCreate(){
 protected void onUpdate(){
     this.updatedAt = new Date();
 }
+
+public void reset() {
+	this.lunchitems = null;
+	this.brinneritems = null;
+	this.caloriesin = 0;
+	this.snackitems = null;
+}
+
+
   
   }
  

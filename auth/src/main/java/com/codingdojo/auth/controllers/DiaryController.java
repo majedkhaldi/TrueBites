@@ -1,5 +1,7 @@
 package com.codingdojo.auth.controllers;
 import java.security.Principal;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,7 @@ public class DiaryController {
 	@GetMapping("/profile/{id}/foodDiary")
 	public String foodDiary(Principal principal, @PathVariable("id") Long id, Model model, HttpSession session) {
 		User user = userservice.findById(id);
+		Diary diary = user.getDiary();
 		List<Brinner> joinedBrinner =  user.getDiary().getBrinneritems();
 		List<Lunch> joinedLunch =  user.getDiary().getLunchitems();
 		List<Snack> joinedSnack =  user.getDiary().getSnackitems();
@@ -61,6 +64,7 @@ public class DiaryController {
 		session.setAttribute("calories", user.getEer());
 		session.setAttribute("user", user.getId());
 		model.addAttribute("joinedBrinner", joinedBrinner);
+		model.addAttribute("caloriesIn", diary.getCaloriesin());
 		model.addAttribute("joinedLunch", joinedLunch);
 		model.addAttribute("joinedSnack", joinedSnack);
 
@@ -133,9 +137,9 @@ public class DiaryController {
     	
     	
     	
-    	if (session.getAttribute("caloriesIn") == null) {
-    	session.setAttribute("caloriesIn" , 0);
-    	}
+//    	if (session.getAttribute("caloriesIn") == null) {
+//    	session.setAttribute("caloriesIn" , 0);
+//    	}
     	/*if (session.getAttribute("proteinIn") == null) {
         	session.setAttribute("proteinIn" , 0);
         	}*/
@@ -143,7 +147,8 @@ public class DiaryController {
     	if (type.equals("breakfast")) {
             Brinner brinner = diaryService.findBrinner(foodId);
             int brinnerCal = brinner.getCalories();
-             newcals = (int) session.getAttribute("caloriesIn") + brinnerCal;
+             newcals = diary.getCaloriesin() + brinnerCal;
+             diary.setCaloriesin(newcals);
              diaryService.addBrinnerItem(diary, brinner);
 
 
@@ -155,7 +160,8 @@ public class DiaryController {
     	if (type.equals("lunch")) {
             Lunch lunch = diaryService.findLunch(foodId);
             int lunchCal = lunch.getCalories();
-             newcals = (int) session.getAttribute("caloriesIn") + lunchCal;
+             newcals = diary.getCaloriesin() + lunchCal;
+             diary.setCaloriesin(newcals);
              diaryService.addLunchItem(diary, lunch);
 
     	}
@@ -164,7 +170,8 @@ public class DiaryController {
     	if (type.equals("dinner")) {
             Brinner brinner = diaryService.findBrinner(foodId);
             int brinnerCal = brinner.getCalories();
-             newcals = (int) session.getAttribute("caloriesIn") + brinnerCal;
+             newcals =  diary.getCaloriesin() + brinnerCal;
+             diary.setCaloriesin(newcals);
              diaryService.addBrinnerItem(diary, brinner);
 
 
@@ -175,8 +182,10 @@ public class DiaryController {
     	if (type.equals("snack")) {
             Snack snack = diaryService.findSnack(foodId);
             int SnackCal = snack.getCalories();
-             newcals = (int) session.getAttribute("caloriesIn") + SnackCal;
+             newcals = diary.getCaloriesin() + SnackCal;
+             diary.setCaloriesin(newcals);
              diaryService.addSnackItem(diary, snack);
+             
 
 
 
@@ -184,7 +193,12 @@ public class DiaryController {
     		
     	}
     
-    	
+    	LocalTime now = LocalTime.now();
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+    	String formattedTime = now.format(formatter);
+    	if(formattedTime == "00:00") {
+    		 diaryService.reset(diary);
+    	}
         
      
 		/*
@@ -192,10 +206,14 @@ public class DiaryController {
 		 */		/*
 		 * double newPros = (double) session.getAttribute("proteinIn") + brinnerPro;
 		 */        
-        session.setAttribute("caloriesIn", newcals);
+//        session.setAttribute("caloriesIn", newcals);
 		/*
 		 * session.setAttribute("proteinIn", newPros);
-		 */        
+		 */ 
+    	diary.setCaloriesin(newcals);
+    	model.addAttribute("caloriesIn", diary.getCaloriesin());
+    
+    	System.out.println(diary.getCaloriesin());
         
         return "redirect:/profile/{userId}/foodDiary";
     }
@@ -217,7 +235,8 @@ public class DiaryController {
         if (type.equals("breakfast")) {
             Brinner brinner = diaryService.findBrinner(foodId);
             int brinnerCal = brinner.getCalories();
-             newcals = (int) session.getAttribute("caloriesIn") - brinnerCal;
+             newcals = diary.getCaloriesin() - brinnerCal;
+             diary.setCaloriesin(newcals);
              diaryService.removeBrinnerItem(diary, brinner);
 
 
@@ -229,7 +248,8 @@ public class DiaryController {
     	if (type.equals("lunch")) {
             Lunch lunch = diaryService.findLunch(foodId);
             int lunchCal = lunch.getCalories();
-             newcals = (int) session.getAttribute("caloriesIn") - lunchCal;
+             newcals = diary.getCaloriesin() - lunchCal;
+             diary.setCaloriesin(newcals);
              diaryService.removelunchItem(diary, lunch);
 
     	}
@@ -238,7 +258,8 @@ public class DiaryController {
     	if (type.equals("dinner")) {
             Brinner brinner = diaryService.findBrinner(foodId);
             int brinnerCal = brinner.getCalories();
-             newcals = (int) session.getAttribute("caloriesIn") - brinnerCal;
+             newcals = diary.getCaloriesin() - brinnerCal;
+             diary.setCaloriesin(newcals);
              diaryService.removeBrinnerItem(diary, brinner);
 
 
@@ -249,7 +270,8 @@ public class DiaryController {
     	if (type.equals("snack")) {
             Snack snack = diaryService.findSnack(foodId);
             int SnackCal = snack.getCalories();
-             newcals = (int) session.getAttribute("caloriesIn") - SnackCal;
+             newcals = diary.getCaloriesin() - SnackCal;
+             diary.setCaloriesin(newcals);
              diaryService.removeSnackItem(diary, snack);
 
 
@@ -264,10 +286,13 @@ public class DiaryController {
         
        /* double brinnerPro =( brinner.getProtein() * 4) / brinnerCal ;
         double newPros = (double) session.getAttribute("proteinIn") + brinnerPro;*/
-        session.setAttribute("caloriesIn", newcals);
+//        session.setAttribute("caloriesIn", newcals);
 /*        session.setAttribute("proteinIn", newPros);
 */        
-        
+    	diary.setCaloriesin(newcals);
+    	model.addAttribute("caloriesIn", diary.getCaloriesin());
+    
+        System.out.println(diary.getCaloriesin());
        
         return "redirect:/profile/{userId}/foodDiary";
     }

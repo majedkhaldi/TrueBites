@@ -86,11 +86,15 @@ public class DiaryController {
     
     
 
-    @PostMapping("/searchBrinner")
-    public String searchBrinner(@RequestParam("query") String query, 
+    @PostMapping("/searchBrinner/{id}")
+    public String searchBrinner(@RequestParam("query") String query,  @PathVariable("id") Long id,
     		HttpSession session
     		,@RequestParam("type") String type,
     		Model model) {
+    	User user = userservice.findById(id);
+		Diary diary = user.getDiary();
+    	
+    	
     	
     	if (type.equals("breakfast")) {
           List<Brinner> results = diaryService.searchBrinner(query);
@@ -122,6 +126,8 @@ public class DiaryController {
         model.addAttribute("type", type);
         model.addAttribute("query", query);
         model.addAttribute("userId",session.getAttribute("user"));
+        model.addAttribute("caloriesIn", diary.getCaloriesin());
+        
         
         return "foodDiary.jsp";
     }

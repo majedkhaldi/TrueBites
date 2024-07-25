@@ -107,7 +107,7 @@
             <div class="card-container">
                 <div class="card">
                     <h3>Food Diary</h3>
-                    <form action="/searchBrinner" method="post">
+                    <form action="/searchBrinner/${userId}" method="post">
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
                         <div class="meal-option">
@@ -151,7 +151,7 @@
 						</ul>
 					</div>
                     
-                    <form action="/searchBrinner" method="post">
+                    <form action="/searchBrinner/${userId}" method="post">
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
                         <div class="meal-option">
@@ -194,7 +194,7 @@
 						</ul>
 					</div>
                     
-                    <form action="/searchBrinner" method="post">
+                    <form action="/searchBrinner/${userId}" method="post">
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
                         <div class="meal-option">
@@ -236,7 +236,7 @@
 						</ul>
 					</div>
                     
-                    <form action="/searchBrinner" method="post">
+                    <form action="/searchBrinner/${userId}" method="post">
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
                         <div class="meal-option">

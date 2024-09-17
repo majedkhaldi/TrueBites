@@ -52,6 +52,9 @@ The Food Diary feature allows users to track their daily food intake effortlessl
 
 We would like to acknowledge and thank the contributors to this project:
 
+Project Demo:
+https://drive.google.com/file/d/1EmkcW9nXiedxUrRIoADXp84Afgh8O4tJ/view?usp=sharing
+
 | Contributor        | Email Address               |
 |-------------------|-----------------------------  |
 | Majed Alkhaldi    | [majed_khaldi@hotmail.com](mailto:majed_khaldi@hotmail.com) |
